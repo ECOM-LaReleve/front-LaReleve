@@ -1,0 +1,7 @@
+{
+  "requireCamelCaseOrUpperCaseIdentifiers": true,
+  "esnext": true,
+  "requireCapitalizedConstructors": true,
+  "requireParenthesesAroundIIFE": true,
+  "validateQuoteMarks": "'"
+}

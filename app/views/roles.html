@@ -1,0 +1,64 @@
+<div layout-fill layout="column" ng-cloak>
+  <!-- Main toolbar -->
+  <md-toolbar ng-class="{'slideTopToBottom': firstAppLaunch, 'animate-show': !firstAppLaunch}" class="md-whiteframe-z1" ng-show="!showSearch">
+    <div class="md-toolbar-tools">
+      <!-- Hamburger icon -->
+      <md-button class="md-icon-button" ng-click="toggleSidenav('left')" hide-gt-md aria-label="Menu">
+        <md-icon md-svg-icon="navigation:ic_menu_24px" aria-label="Menu"></md-icon>
+      </md-button>
+      <h3>
+        La Relève - Sélection des rôles
+      </h3>
+      <span flex></span>
+
+      <!-- Search and menus icons -->
+      <md-button class="md-icon-button" aria-label="Search" ng-click="toggleSearch()">
+        <md-icon md-svg-icon="action:ic_search_24px" aria-label="Search"></md-icon>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="Open Settings" ng-click="showListBottomSheet($event)">
+        <md-icon md-svg-icon="navigation:ic_more_vert_24px" aria-label="More"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+
+  <!-- Content -->
+  <div layout="row" flex layout-align="center center">
+
+    <md-card class="slideBottomToTop" ng-show="!authenticated">
+      <!-- <img ng-src="images/hardis-logo.png" class="md-card-image logoLogin" alt="logo Hardis"> -->
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Travailleur Social</span>
+          <!-- <span class="md-subhead">Large</span> -->
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        
+      </md-card-content>
+    </md-card><md-card class="slideBottomToTop" ng-show="!authenticated">
+      <!-- <img ng-src="images/hardis-logo.png" class="md-card-image logoLogin" alt="logo Hardis"> -->
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Administrateur</span>
+          <!-- <span class="md-subhead">Large</span> -->
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        
+      </md-card-content>
+    </md-card><md-card class="slideBottomToTop" ng-show="!authenticated">
+      <!-- <img ng-src="images/hardis-logo.png" class="md-card-image logoLogin" alt="logo Hardis"> -->
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Directrice adjointe éducative</span>
+          <!-- <span class="md-subhead">Large</span> -->
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        
+      </md-card-content>
+    </md-card>
+
+  </div>
+</div>
