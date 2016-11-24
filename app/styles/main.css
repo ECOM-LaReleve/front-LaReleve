@@ -76,6 +76,16 @@ md-toolbar #sidenav-background {
 }
 
 
+#menageSearchInputContainer .md-errors-spacer {
+  display: none;
+}
+
+#infoMenageSidenav.md-locked-open {
+   width: 350px;
+   min-width: 350px;
+   max-width: 350px;
+}
+
 
 
 

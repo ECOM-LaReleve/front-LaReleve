@@ -46,6 +46,11 @@ angular
         controller: 'RolesCtrl',
         controllerAs: 'roles'
       })
+      .when('/menage', {
+        templateUrl: 'views/menage.html',
+        controller: 'MenageCtrl',
+        controllerAs: 'menage'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -108,5 +113,5 @@ angular
 
       // Illustrated user icons used in the docs https://material.angularjs.org/latest/#/demo/material.components.gridList
       //.iconSet('avatars', 'https://raw.githubusercontent.com/angular/material/master/docs/app/icons/avatar-icons.svg', 24)
-      .defaultIconSet('../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-action.svg', 24);
+      //.defaultIconSet('../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-action.svg', 24);
   });
