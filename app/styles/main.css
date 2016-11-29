@@ -111,6 +111,14 @@ md-card md-list {
   max-width: 400px;
 }
 
+#addMenage {
+  top: auto;
+  right: 20px;
+  bottom: 20px;
+  left: auto;
+  position: fixed;
+}
+
 
 
 /* Responsive: Portrait tablets and up */

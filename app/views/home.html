@@ -1,11 +1,114 @@
 <div layout-fill layout="column">
 
   <!-- Content -->
-  <div layout="column" layout-padding>
 
-    <md-card>
-      <h1>Bienvenue jeune utilisateur de la Relève !</h1>
-    </md-card>
+      <!-- <md-toolbar id="right-toolbar" class="animate-show md-whiteframe-z1 toolbar" ng-class="{'md-hue-1':showSearch}">
+        <div class="md-toolbar-tools">
+          <md-button class="md-icon-button" ng-click="toggleSidenav('nav')" hide-gt-xs aria-label="Menu">
+            <md-icon md-svg-icon="navigation:ic_arrow_back_24px" aria-label="Menu"></md-icon>
+          </md-button>
+          <span flex></span>
+          <md-button class="md-icon-button" aria-label="Open Settings" ng-click="showListBottomSheet($event)">
+            <md-icon md-svg-icon="navigation:ic_more_vert_24px" aria-label="More"></md-icon>
+          </md-button>
+        </div>
+      </md-toolbar> -->
+        <div class="insetCustom"></div>
+        <div class="inset" hide-xs></div>
+        <div class="animate-show-in" layout-align="center center">
+          <div flex-gt-xs="95" flex-gt-lg="80" style="margin: auto;">
 
-  </div>
+            <md-toolbar md-theme="greyTheme" class="animate-show md-whiteframe-z1 toolbar md-hue-1">
+              <div class="md-toolbar-tools">
+
+                <md-input-container>
+                  <label>Actes</label>
+                  <md-select ng-model="ctrl.acte">
+                    <md-option>Aucun</md-option>
+                    <md-option ng-repeat="acte in [1,2,3,4,5,6]" ng-value="acte">
+                      Acte n°{{acte}}
+                    </md-option>
+                  </md-select>
+                </md-input-container>
+                <span flex></span>
+                <md-input-container>
+                  <label>Prestations</label>
+                  <md-select ng-model="ctrl.prestation">
+                    <md-option>Aucune</md-option>
+                    <md-option ng-repeat="prestation in [1,2,3,4,5,6]" ng-value="prestation">
+                      Prestation n°{{prestation}}
+                    </md-option>
+                  </md-select>
+                </md-input-container>
+                <span flex></span>
+                <md-input-container>
+                  <label>Besoins</label>
+                  <md-select ng-model="ctrl.besoin">
+                    <md-option>Aucun</md-option>
+                    <md-option ng-repeat="besoin in [1,2,3,4,5,6]" ng-value="besoin">
+                      Besoin n°{{besoin}}
+                    </md-option>
+                  </md-select>
+                </md-input-container>
+                <span flex></span>
+                <md-datepicker ng-model="myDate" md-placeholder="Date entre le"></md-datepicker>
+                
+              </div>
+            </md-toolbar>
+
+            <md-subheader class="md-no-sticky">Urgent</md-subheader>
+            <md-card>
+              <md-list>
+               <md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5] track by $index">
+                  <div class="md-list-item-text compact">
+                    <h3>Ménage n°{{elem}}</h3>
+                    <p>J'adore les kinder Bueno !</p>
+                  </div>
+                  <md-icon class="taskNotOk" md-svg-icon="alert:ic_error_24px" aria-label="task not ok icon"></md-icon>
+                  <md-divider ng-if="!$last"></md-divider>
+               </md-list-item>
+              </md-list>
+            </md-card>
+
+            <md-subheader class="md-no-sticky">Autres éléments</md-subheader>
+            <md-card>
+              <md-list>
+               <md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5,11,12,13,14,15] track by $index">
+                  <div class="md-list-item-text compact">
+                    <h3>Ménage n°{{elem}}</h3>
+                    <p>J'adore les kinder Bueno !</p>
+                  </div>
+                  <md-divider ng-if="!$last"></md-divider>
+               </md-list-item>
+              </md-list>
+            </md-card>
+
+
+            <md-fab-speed-dial id="addMenage" md-direction="up" class="md-fling">
+              <md-fab-trigger>
+                <md-button aria-label="menu" class="md-fab md-primary">
+                  <md-icon md-svg-icon="content:ic_add_24px" aria-label="add menage"></md-icon>
+                </md-button>
+              </md-fab-trigger>
+
+              <md-fab-actions>
+                <md-button aria-label="Menage" class="md-fab md-raised md-mini">
+                  <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
+                    Ménage
+                  </md-tooltip>
+                  <md-icon md-svg-src="social:ic_person_add_24px" aria-label="Ajouter un ménage"></md-icon>
+                </md-button>
+                <md-button aria-label="Individu" class="md-fab md-raised md-mini">
+                  <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
+                    Individu
+                  </md-tooltip>
+                  <md-icon md-svg-src="social:ic_person_add_24px" aria-label="Ajouter un individu"></md-icon>
+                </md-button>
+              </md-fab-actions>
+            </md-fab-speed-dial>
+
+            <div class="inset" hide-xs></div>
+
+          </div>
+      </div>
 </div layout-fill>

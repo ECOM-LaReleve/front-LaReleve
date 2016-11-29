@@ -94,7 +94,6 @@ angular
     $mdThemingProvider.alwaysWatchTheme(true);
   })
 
-
   .config(function($mdIconProvider) {
     $mdIconProvider
       // linking to https://github.com/google/material-design-icons/tree/master/sprites/svg-sprite

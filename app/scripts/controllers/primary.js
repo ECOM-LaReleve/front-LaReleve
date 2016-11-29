@@ -36,4 +36,6 @@ angular.module('laReleveApp')
 	    	$location.path(path);
 	    }
 	  };
+
+
   }]);
