@@ -46,6 +46,11 @@ angular
         controller: 'RolesCtrl',
         controllerAs: 'roles'
       })
+      .when('/menage', {
+        templateUrl: 'views/menage.html',
+        controller: 'MenageCtrl',
+        controllerAs: 'menage'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -64,20 +69,21 @@ angular
       'contrastDarkColors': ['50'],
       '50': 'ffffff'
     });
-
     $mdThemingProvider.definePalette('customLime', customLimeMap);
+
     $mdThemingProvider.theme('default')
-      .primaryPalette('lime', {
-        'default': '500',
-        'hue-1': '50'
-      })
-      .accentPalette('pink');
+      .primaryPalette('lime');
     $mdThemingProvider.theme('greenTheme')
       .primaryPalette('green');
     $mdThemingProvider.theme('redTheme')
       .primaryPalette('red');
-    $mdThemingProvider.theme('input', 'default')
+    $mdThemingProvider.theme('greyTheme')
       .primaryPalette('grey');
+    $mdThemingProvider.theme('input', 'default')
+      .primaryPalette('lime', {
+        'default': '50',
+        'hue-1': '50'
+      });
     $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
 
     $mdThemingProvider.alwaysWatchTheme(true);
@@ -104,9 +110,9 @@ angular
       .iconSet('navigation', '../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-navigation.svg', 24)
       .iconSet('notification', '../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-notification.svg', 24)
       .iconSet('social', '../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-social.svg', 24)
-      .iconSet('toggle', '../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-toggle.svg', 24)
+      .iconSet('toggle', '../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-toggle.svg', 24);
 
       // Illustrated user icons used in the docs https://material.angularjs.org/latest/#/demo/material.components.gridList
       //.iconSet('avatars', 'https://raw.githubusercontent.com/angular/material/master/docs/app/icons/avatar-icons.svg', 24)
-      .defaultIconSet('../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-action.svg', 24);
+      //.defaultIconSet('../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-action.svg', 24);
   });

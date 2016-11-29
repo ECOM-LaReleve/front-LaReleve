@@ -7,6 +7,7 @@ version 0.15.1.
 
 When retrieving the project, run the following commands:
 
+	sudo npm install -g grunt-cli bower yo generator-karma generator-angular
     npm install && bower install
 
 ## Build & development
