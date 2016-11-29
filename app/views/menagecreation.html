@@ -1,0 +1,99 @@
+<md-content layout-fill>
+	<md-card>
+		<md-card-header>
+	    <md-card-avatar>
+	      <md-icon md-svg-icon="action:ic_assignment_ind_24px"></md-icon>
+	    </md-card-avatar>
+	    <md-card-header-text>
+	      <span class="md-title">Création d'un ménage</span>
+	    </md-card-header-text>
+	  </md-card-header>
+		<form name="menageCreationForm">
+
+		<!-- Affiliation -->
+			<md-toolbar md-theme="greyTheme" class="md-hue-1">
+	      <div class="md-toolbar-tools">
+	        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+	          <md-icon md-svg-icon="action:ic_assignment_ind_24px"></md-icon>
+	        </md-button>
+	        <h2>
+	          <span>Affiliation</span>
+	        </h2>
+	        <span flex></span>
+	      </div>
+	    </md-toolbar>
+		  <div layout="row" layout-padding>
+		    <md-input-container class="md-block" flex>
+		      <label>Service</label>
+		      <md-select ng-model="menage.service">
+		        <md-option ng-repeat="service in [1,2,3,4,5,6,7,8,9]" value="{{service}}">
+		          Service n°{{service}}
+		        </md-option>
+		      </md-select>
+		    </md-input-container>
+
+		    <md-input-container class="md-block" flex>
+		      <label>Référent</label>
+		      <md-select ng-model="menage.referant">
+		        <md-option ng-repeat="referent in [1,2,3,4,5,6,7,8,9]" value="{{referent}}">
+		          Référent n°{{referent}}
+		        </md-option>
+		      </md-select>
+		    </md-input-container>
+		  </div>
+
+		 
+		  <!-- Adresse -->
+		 	<md-toolbar md-theme="greyTheme" class="md-hue-1">
+	      <div class="md-toolbar-tools">
+	        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+	          <md-icon md-svg-icon="action:ic_home_24px"></md-icon>
+	        </md-button>
+	        <h2>
+	          <span>Adresse</span>
+	        </h2>
+	        <span flex></span>
+	      </div>
+	    </md-toolbar>
+
+		  <div layout-padding>
+		    
+			  <md-input-container class="md-block">
+			    <label>Adresse</label>
+			    <textarea ng-model="menage.adresse" md-maxlength="255" rows="3" md-select-on-focus></textarea>
+			  </md-input-container>
+
+		  </div>
+
+
+		  <!-- Composition du ménage -->
+			<md-toolbar md-theme="greyTheme" class="md-hue-1">
+				<div class="md-toolbar-tools">
+				  <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+				    <md-icon md-svg-icon="social:ic_people_24px"></md-icon>
+				  </md-button>
+				  <h2>
+				    <span>Composition du ménage</span>
+				  </h2>
+				  <span flex></span>
+				</div>
+			</md-toolbar>
+
+			<div layout-padding>
+
+			  <div>Individu</div>
+
+		  </div>
+
+
+
+		</form>
+
+		<md-card-actions layout="row" layout-align="end center">
+			<md-button>Valider</md-button>
+		</md-card-actions>
+	</md-card>
+
+
+	
+</md-content>

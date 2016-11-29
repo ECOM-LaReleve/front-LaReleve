@@ -59,7 +59,7 @@
             <md-subheader class="md-no-sticky">Urgent</md-subheader>
             <md-card>
               <md-list>
-               <md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5] track by $index">
+               <md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5] track by $index" ng-click="go('/menage')">
                   <div class="md-list-item-text compact">
                     <h3>Ménage n°{{elem}}</h3>
                     <p>J'adore les kinder Bueno !</p>
@@ -73,7 +73,7 @@
             <md-subheader class="md-no-sticky">Autres éléments</md-subheader>
             <md-card>
               <md-list>
-               <md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5,11,12,13,14,15] track by $index">
+               <md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5,11,12,13,14,15] track by $index" ng-click="go('/menage')">
                   <div class="md-list-item-text compact">
                     <h3>Ménage n°{{elem}}</h3>
                     <p>J'adore les kinder Bueno !</p>
@@ -92,11 +92,11 @@
               </md-fab-trigger>
 
               <md-fab-actions>
-                <md-button aria-label="Menage" class="md-fab md-raised md-mini">
+                <md-button aria-label="Menage" class="md-fab md-raised md-mini" ng-click="go('/menageCreation')">
                   <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
                     Ménage
                   </md-tooltip>
-                  <md-icon md-svg-src="social:ic_person_add_24px" aria-label="Ajouter un ménage"></md-icon>
+                  <md-icon md-svg-src="social:ic_group_add_24px" aria-label="Ajouter un ménage"></md-icon>
                 </md-button>
                 <md-button aria-label="Individu" class="md-fab md-raised md-mini">
                   <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
