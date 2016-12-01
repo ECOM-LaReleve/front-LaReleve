@@ -119,6 +119,16 @@ md-card md-list {
   position: fixed;
 }
 
+#menageCreationForm md-icon {
+  color: initial;
+  fill: initial;
+}
+
+md-card-header-text > h2 {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 
 
 /* Responsive: Portrait tablets and up */

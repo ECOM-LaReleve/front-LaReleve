@@ -1,14 +1,14 @@
 <md-content layout-fill>
 	<md-card>
-		<md-card-header>
+		<md-card-header md-colors="{background: 'greyTheme-primary-700'}">
 	    <md-card-avatar>
-	      <md-icon md-svg-icon="action:ic_assignment_ind_24px"></md-icon>
+	      <md-icon md-svg-src="social:ic_group_add_24px" aria-label="Ajouter un ménage"></md-icon>
 	    </md-card-avatar>
 	    <md-card-header-text>
-	      <span class="md-title">Création d'un ménage</span>
+	      <h2>Création d'un ménage</h2>
 	    </md-card-header-text>
 	  </md-card-header>
-		<form name="menageCreationForm">
+		<form name="menageCreationForm" id="menageCreationForm">
 
 		<!-- Affiliation -->
 			<md-toolbar md-theme="greyTheme" class="md-hue-1">
@@ -22,7 +22,7 @@
 	        <span flex></span>
 	      </div>
 	    </md-toolbar>
-		  <div layout="row" layout-padding>
+		  <div layout="row" layout-margin>
 		    <md-input-container class="md-block" flex>
 		      <label>Service</label>
 		      <md-select ng-model="menage.service">
@@ -52,7 +52,6 @@
 	        <h2>
 	          <span>Adresse</span>
 	        </h2>
-	        <span flex></span>
 	      </div>
 	    </md-toolbar>
 
@@ -79,10 +78,36 @@
 				</div>
 			</md-toolbar>
 
-			<div layout-padding>
+			<div layout="row" layout-margin>
+		    <md-autocomplete flex required
+            md-input-name="chefDeFamilleField"
+            md-selected-item="selectedItem"
+            md-search-text="searchText"
+            md-require-match
+            md-items="item in querySearch(searchText)"
+            md-item-text="item.display"
+            md-floating-label="Chef de famille">
+          <md-item-template>
+            <span md-highlight-text="searchText">{{item.display}}</span>
+          </md-item-template>
+          <md-not-found>
+	          <a ng-click="ctrl.newIndividu(ctrl.searchText)">Aucun résulat pour "{{searchText}}". Créez un nouvel individu en cliquant ici !</a>
+	        </md-not-found>
+          <div ng-messages="menageCreationForm.chefDeFamilleField.$error" ng-if="menageCreationForm.chefDeFamilleField.$touched">
+            <div ng-message="required">Ce champ est <b>obligatoire !</b></div>
+            <div ng-message="md-require-match">Vous devez saisir une personne <b>existante !</b></div>
+          </div>
+ 				</md-autocomplete>
 
-			  <div>Individu</div>
 
+		    <md-input-container class="md-block" flex>
+		      <label>Référent</label>
+		      <md-select ng-model="menage.referant">
+		        <md-option ng-repeat="referent in [1,2,3,4,5,6,7,8,9]" value="{{referent}}">
+		          Référent n°{{referent}}
+		        </md-option>
+		      </md-select>
+		    </md-input-container>
 		  </div>
 
 
