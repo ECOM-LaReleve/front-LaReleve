@@ -1,0 +1,60 @@
+<md-dialog aria-label="Form">
+	<md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>
+      	Ajouter un acte
+      </h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon md-svg-src="navigation:ic_close_24px" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+	<md-dialog-content class="md-padding">
+		<p>
+			Saisissez les informations concernant votre nouvel acte:
+		</p>
+		<form name="addActeForm" layout="column">
+
+			<p>Choix séléctionné: <span class="radioValue">{{ beneficiaire }}</span> </p>
+	    <md-radio-group ng-model="acteInfos.beneficiaire" required>
+	      <md-radio-button value="menage" class="md-primary">Ménage</md-radio-button>
+	      <md-radio-button value="individu"> Individu </md-radio-button>
+	    </md-radio-group>
+
+	    <md-input-container ng-if="acteInfos.beneficiaire === 'individu'">
+    		<label>Choisisez un individu</label>
+        <md-select ng-model="acteInfos.individu" required>
+          <md-option ng-repeat="individu in [1,2,3,4,5,6]" ng-value="individu">
+            Individu n°{{$index+1}}
+          </md-option>
+        </md-select>
+    	</md-input-container>
+
+
+      <md-input-container>
+    		<label>Besoin</label>
+        <md-select ng-model="acteInfos.besoin" required>
+          <md-option ng-repeat="besoin in [1,2,3,4,5,6]" ng-value="besoin">
+            Besoin n°{{$index+1}}
+          </md-option>
+        </md-select>
+    	</md-input-container>
+
+    	<md-input-container>
+    		<label>Acte</label>
+        <md-select ng-model="acteInfos.acte" required>
+          <md-option ng-repeat="acte in [1,2,3,4,5,6]" ng-value="acte">
+            Acte n°{{$index+1}}
+          </md-option>
+        </md-select>
+    	</md-input-container>
+
+		</form>
+	</md-dialog-content>
+	<md-dialog-actions>
+		<span flex></span>
+		<md-button ng-click="cancel()"> Annuler </md-button>
+		<md-button ng-disabled="addActeForm.$invalid" ng-click="addActe(acteInfos)" class="md-primary"> Enregistrer </md-button>
+	</md-dialog-actions>
+</md-dialog>

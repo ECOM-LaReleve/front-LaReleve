@@ -14,9 +14,7 @@ angular.module('laReleveApp')
       'AngularJS',
       'Karma'
     ];
-
-    console.log("test micro");
-
+    
     /**
      * Initialize Project list
      */
