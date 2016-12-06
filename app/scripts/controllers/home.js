@@ -8,10 +8,33 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('HomeCtrl', function () {
+  .controller('HomeCtrl', ['$scope', 'ExempleFactory', function ($scope, ExempleFactory) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+
+    console.log("test micro");
+
+    /**
+     * Initialize Project list
+     */
+    $scope.utilisateursList = function() {
+       ExempleFactory.getUtilisateurs(function (utilisateurs){
+        utilisateurs.$promise.then(function(utilisateurs) {
+        	$scope.utilisateurs = utilisateurs;
+
+        	console.log($scope.utilisateurs);
+        	//Hide the loading bar when the data are available
+        	//$scope.hideLoadingBar();
+        });
+      });
+    };
+
+
+    $scope.utilisateursList();
+
+
+
+  }]);

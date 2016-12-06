@@ -58,11 +58,11 @@ angular.module('laReleveApp')
             collabDefault: '/assignments/collabs/:id',
             collabFromWeek: '/assignments/collabs/:id/:week,:year'
         },
-        users: {
+        utilisateurs: {
             add:'/users/add',
             delete:'/users/:id',
             list:'/users',
-            user:'/user'
+            get:'/utilisateurs'
 
         }
     };
