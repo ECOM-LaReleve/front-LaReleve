@@ -8,7 +8,7 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('MenagecreationCtrl', ['$scope', '$q', '$timeout', function ($scope, $q, $timeout) {
+  .controller('MenagecreationCtrl', ['$scope', '$q', '$timeout', '$mdDialog', function ($scope, $q, $timeout, $mdDialog) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -39,8 +39,54 @@ angular.module('laReleveApp')
       return function filterFn(state) {
         return (state.value.indexOf(lowercaseQuery) === 0);
       };
-
     }
+
+     /**
+     * Show the dialog to create a new individu to the database
+     * @param  {[type]} ev [description]
+     * @return {[type]}    [description]
+     */
+    $scope.showCreateIndividu = function(ev) {
+      $mdDialog.show({
+        controller: createIndividuDialogController,
+        templateUrl: 'views/createIndividuDialog.html',
+        scope: $scope.$new(),
+        targetEvent: ev,
+      })
+      .then(function() {
+        console.log('Create individu done !');
+      }, function() {
+        console.log('Create individu failed !');
+      });
+    };
+
+
+    /**
+     * Controller for the createIndividuDialog
+     * @param  {[type]}
+     * @param  {[type]}
+     * @return {[type]}
+     */
+    function createIndividuDialogController($scope, $mdDialog) {
+      $scope.collabInfos = {};
+      $scope.collabInfos.technos = [{}];
+      $scope.technosCopies = [];
+      $scope.technosCopies[0] = $scope.technos;
+      $scope.hide = function() {
+        $mdDialog.hide();
+      };
+      $scope.cancel = function() {
+        $mdDialog.cancel();
+      };
+      $scope.createIndividu = function(individuInfos) {
+      
+        console.log(individuInfos);
+        // $scope.addCollab(collabInfos);
+        // $mdDialog.hide();
+        // $scope.showLoadingBar();
+      };
+    }
+
 
 
   }]);
