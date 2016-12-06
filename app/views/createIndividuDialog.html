@@ -1,0 +1,91 @@
+<md-dialog aria-label="Form">
+	<md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>
+      	Créer un {{isChefDeFamille ? "chef de famille" : "individu"}}
+      </h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon md-svg-src="navigation:ic_close_24px" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+	<md-dialog-content class="md-padding">
+		<p>
+			Saisissez les informations concernant votre nouveau {{isChefDeFamille ? "chef de famille" : "individu"}}
+		</p>
+		<form name="createIndividuForm" layout="column">
+
+			<md-input-container>
+        <label>Nom d'usage {{isChefDeFamille ? "du chef de famille" : " de l'individu"}}</label>
+        <input required md-maxlength="45" ng-model="individuInfos.nomUsage" name="nomUsage" md-autofocus>
+        <div ng-messages="createIndividuForm.nomUsage.$error">
+          <div ng-message="required">Ce champ est obligatoire !</div>
+          <div ng-message="md-maxlength">Le nom d'usage de l'individu ne peut pas faire plus de 45 caractères !</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Nom de naissance {{isChefDeFamille ? "du chef de famille" : " de l'individu"}}</label>
+        <input required md-maxlength="45" ng-model="individuInfos.nomNaissance" name="nomNaissance">
+        <div ng-messages="createIndividuForm.nomNaissance.$error">
+          <div ng-message="required">Ce champ est obligatoire !</div>
+          <div ng-message="md-maxlength">Le nom de naissance de l'individu ne peut pas faire plus de 45 caractères !</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Prénom {{isChefDeFamille ? "du chef de famille" : " de l'individu"}}</label>
+        <input required md-maxlength="45" ng-model="individuInfos.prenom" name="prenom">
+        <div ng-messages="createIndividuForm.prenom.$error">
+          <div ng-message="required">Ce champ est obligatoire !</div>
+          <div ng-message="md-maxlength">Le prénom de l'individu ne peut pas faire plus de 45 caractères !</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Numéro de téléphone</label>
+				<input type="text" ng-model="individuInfos.tel" name="tel" md-maxlength="20">
+        <div ng-messages="createIndividuForm.tel.$error">
+          <div ng-message="md-maxlength">Le numéro de l'individu ne peut pas faire plus de 45 caractères !</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Ville de naissance {{isChefDeFamille ? "du chef de famille" : " de l'individu"}}</label>
+        <input md-maxlength="45" ng-model="individuInfos.villeNaissance" name="villeNaissance">
+        <div ng-messages="createIndividuForm.villeNaissance.$error">
+          <div ng-message="md-maxlength">La ville de naissance de l'individu ne peut pas faire plus de 45 caractères !</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Statut matrimonial</label>
+				<input type="text" ng-model="individuInfos.statutMatrimonial" name="statutMatrimonial" md-maxlength="45">
+        <div ng-messages="createIndividuForm.statutMatrimonial.$error">
+          <div ng-message="md-maxlength">Le statut matrimonial ne peut pas faire plus de 45 caractères !</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Date d'entrée en France {{isChefDeFamille ? "du chef de famille" : " de l'individu"}}</label>
+        <md-datepicker ng-model="individuInfos.dateEntreeFr" md-placeholder="Saisissez la date d'entrée en France" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+      </md-input-container>
+
+
+      <md-input-container>
+        <label>Statut</label>
+				<input type="text" ng-model="individuInfos.statutFr" name="statutFr" md-maxlength="45">
+        <div ng-messages="createIndividuForm.statutFr.$error">
+          <div ng-message="md-maxlength">Le statut ne peut pas faire plus de 45 caractères !</div>
+        </div>
+      </md-input-container>
+		</form>
+	</md-dialog-content>
+	<md-dialog-actions>
+		<span flex></span>
+		<md-button ng-click="cancel()"> Annuler </md-button>
+		<md-button ng-if="isChefDeFamille" ng-disabled="createIndividuForm.$invalid" ng-click="createChefDeFamille(individuInfos)" class="md-primary"> Enregistrer </md-button>
+		<md-button ng-if="!isChefDeFamille" ng-disabled="createIndividuForm.$invalid" ng-click="createIndividu(individuInfos)" class="md-primary"> Enregistrer </md-button>
+	</md-dialog-actions>
+</md-dialog>

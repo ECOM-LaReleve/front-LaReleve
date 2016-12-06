@@ -111,6 +111,24 @@ md-card md-list {
   max-width: 400px;
 }
 
+#addMenage {
+  top: auto;
+  right: 20px;
+  bottom: 20px;
+  left: auto;
+  position: fixed;
+}
+
+#menageCreationForm md-icon {
+  color: initial;
+  fill: initial;
+}
+
+md-card-header-text > h2 {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 
 
 /* Responsive: Portrait tablets and up */

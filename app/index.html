@@ -17,7 +17,7 @@
   </head>
   <body ng-app="laReleveApp" layout="column" ng-controller="PrimaryCtrl" ng-cloak class="md-default-theme">
     <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <p class="browsehappy">Vous utilisez un navigateur <strong>trop ancien</strong>. Merci de <a href="http://browsehappy.com/">le mettre à jour</a> pour améliorer votre experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
@@ -28,7 +28,7 @@
         <md-button class="md-icon-button" ng-click="toggleSidenav('left')" hide-gt-md aria-label="Menu">
           <md-icon md-svg-icon="navigation:ic_menu_24px" aria-label="Menu"></md-icon>
         </md-button>
-        <h3>
+        <h3 ng-click="go('/')">
           La Relève - Accueil
         </h3>
         <span flex="10"></span>
@@ -94,6 +94,7 @@
         <script src="scripts/services/webservices.js"></script>
         <script src="scripts/controllers/menage.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/menagecreation.js"></script>
         <!-- endbuild -->
 </body>
 </html>
