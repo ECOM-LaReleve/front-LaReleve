@@ -61,6 +61,11 @@ angular
         controller: 'MenagecreationCtrl',
         controllerAs: 'menageCreation'
       })
+      .when('/menageInfos', {
+        templateUrl: 'views/menageinfos.html',
+        controller: 'MenageinfosCtrl',
+        controllerAs: 'menageInfos'
+      })
       .otherwise({
         redirectTo: '/'
       });
