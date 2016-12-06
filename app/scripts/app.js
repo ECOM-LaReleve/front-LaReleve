@@ -66,6 +66,22 @@ angular
       });
   })
 
+  .config(function ($httpProvider) {
+
+    //enable CSRF
+    $httpProvider.defaults.xsrfCookieName = 'CSRF-TOKEN';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
+    $httpProvider.defaults.withCredentials = true;
+
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+    // $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+    // $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+    // $httpProvider.defaults.headers.common['Cache-Control'] = 'no-cache';
+    // $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = 'x-requested-with';
+  })
+
 
   .config(function($mdThemingProvider) {
     var customBlueMap =     $mdThemingProvider.extendPalette('light-blue', {

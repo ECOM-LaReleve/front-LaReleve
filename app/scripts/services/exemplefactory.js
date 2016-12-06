@@ -8,19 +8,20 @@
  * Factory in the laReleveApp.
  */
 angular.module('laReleveApp')
-  .factory('ExempleFactory', ['$resource', '$rootScope', 'webservices', function ($resource, $rootScope, webservices) {
-    var userWebservices = webservices.webServicesGroup;
+  .factory('ExempleFactory', ['$resource', '$rootScope', 'WebServices', function ($resource, $rootScope, WebServices) {
+    var userWebservices = WebServices.webServicesGroup;
     return $resource(
-      userWebservices.assignments.projectDefault, //urls
-      {id:'@id'},                                 //params
-      { getProjectStaffing : {                    //actions
+      userWebservices.utilisateurs.get, //urls
+      {},                                 //params
+      { getUtilisateurs : {                    //actions
         method: 'GET',
         interceptor: {
           responseError: function (data) {
             $rootScope.$broadcast('requestResponseError', data);  //broadcast an event if an error occurred
           }
         },
-        headers: {'Content-Type': 'application/json'}
+        headers: {'Content-Type': 'application/json'},
+        isArray: true
       }
     });
   }]);
