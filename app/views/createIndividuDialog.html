@@ -2,7 +2,7 @@
 	<md-toolbar>
     <div class="md-toolbar-tools">
       <h2>
-      	Créer un individu
+      	Créer un {{isChefDeFamille ? "chef de famille" : "individu"}}
       </h2>
       <span flex></span>
       <md-button class="md-icon-button" ng-click="cancel()">
@@ -12,12 +12,12 @@
   </md-toolbar>
 	<md-dialog-content class="md-padding">
 		<p>
-			Saisissez les informations concernant votre nouveau individu.
+			Saisissez les informations concernant votre nouveau {{isChefDeFamille ? "chef de famille" : "individu"}}
 		</p>
 		<form name="createIndividuForm" layout="column">
 
 			<md-input-container>
-        <label>Nom d'usage de l'individu</label>
+        <label>Nom d'usage {{isChefDeFamille ? "du chef de famille" : " de l'individu"}}</label>
         <input required md-maxlength="45" ng-model="individuInfos.nomUsage" name="nomUsage" md-autofocus>
         <div ng-messages="createIndividuForm.nomUsage.$error">
           <div ng-message="required">Ce champ est obligatoire !</div>
@@ -26,7 +26,7 @@
       </md-input-container>
 
       <md-input-container>
-        <label>Nom de naissance de l'individu</label>
+        <label>Nom de naissance {{isChefDeFamille ? "du chef de famille" : " de l'individu"}}</label>
         <input required md-maxlength="45" ng-model="individuInfos.nomNaissance" name="nomNaissance">
         <div ng-messages="createIndividuForm.nomNaissance.$error">
           <div ng-message="required">Ce champ est obligatoire !</div>
@@ -35,7 +35,7 @@
       </md-input-container>
 
       <md-input-container>
-        <label>Prénom de l'individu</label>
+        <label>Prénom {{isChefDeFamille ? "du chef de famille" : " de l'individu"}}</label>
         <input required md-maxlength="45" ng-model="individuInfos.prenom" name="prenom">
         <div ng-messages="createIndividuForm.prenom.$error">
           <div ng-message="required">Ce champ est obligatoire !</div>
@@ -52,7 +52,7 @@
       </md-input-container>
 
       <md-input-container>
-        <label>Ville de naissance de l'individu</label>
+        <label>Ville de naissance {{isChefDeFamille ? "du chef de famille" : " de l'individu"}}</label>
         <input md-maxlength="45" ng-model="individuInfos.villeNaissance" name="villeNaissance">
         <div ng-messages="createIndividuForm.villeNaissance.$error">
           <div ng-message="md-maxlength">La ville de naissance de l'individu ne peut pas faire plus de 45 caractères !</div>
@@ -68,7 +68,7 @@
       </md-input-container>
 
       <md-input-container>
-        <label>Date d'entrée en France de l'individu</label>
+        <label>Date d'entrée en France {{isChefDeFamille ? "du chef de famille" : " de l'individu"}}</label>
         <md-datepicker ng-model="individuInfos.dateEntreeFr" md-placeholder="Saisissez la date d'entrée en France" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
       </md-input-container>
 
@@ -85,6 +85,7 @@
 	<md-dialog-actions>
 		<span flex></span>
 		<md-button ng-click="cancel()"> Annuler </md-button>
-		<md-button ng-disabled="createIndividuForm.$invalid" ng-click="createIndividu(individuInfos)" class="md-primary"> Enregistrer </md-button>
+		<md-button ng-if="isChefDeFamille" ng-disabled="createIndividuForm.$invalid" ng-click="createChefDeFamille(individuInfos)" class="md-primary"> Enregistrer </md-button>
+		<md-button ng-if="!isChefDeFamille" ng-disabled="createIndividuForm.$invalid" ng-click="createIndividu(individuInfos)" class="md-primary"> Enregistrer </md-button>
 	</md-dialog-actions>
 </md-dialog>

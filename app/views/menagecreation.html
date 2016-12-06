@@ -78,7 +78,7 @@
 				</div>
 			</md-toolbar>
 
-			<div layout="row" layout-margin>
+			<div layout="column" layout-margin>
 		    <md-autocomplete flex required
             md-input-name="chefDeFamilleField"
             md-selected-item="selectedItem"
@@ -91,7 +91,7 @@
             <span md-highlight-text="searchText">{{item.display}}</span>
           </md-item-template>
           <md-not-found>
-	          <a ng-click="showCreateIndividu($event)">Aucun résulat pour "{{searchText}}". Créez un nouvel individu en cliquant ici !</a>
+	          <a ng-click="showCreateIndividu($event, true)">Aucun résulat pour "{{searchText}}". Créez un nouvel individu en cliquant ici !</a>
 	        </md-not-found>
           <div ng-messages="menageCreationForm.chefDeFamilleField.$error" ng-if="menageCreationForm.chefDeFamilleField.$touched">
             <div ng-message="required">Ce champ est <b>obligatoire !</b></div>
@@ -100,14 +100,40 @@
  				</md-autocomplete>
 
 
-		    <md-input-container class="md-block" flex>
-		      <label>Référent</label>
-		      <md-select ng-model="menage.referant">
-		        <md-option ng-repeat="referent in [1,2,3,4,5,6,7,8,9]" value="{{referent}}">
-		          Référent n°{{referent}}
-		        </md-option>
-		      </md-select>
-		    </md-input-container>
+ 				<md-subheader>Individus</md-subheader>
+ 				<div layout="row" layout-wrap layout-align="space-around center">
+
+ 					<!-- <md-input-container ng-repeat="individu in [1,2,3,4,5,6,7]" flex="40">
+		        <label>Individu n°{{$index+1}}</label>
+		        <input disabled ng-model="individu" name="collabMatricule">
+		      </md-input-container> -->
+
+		      <md-card ng-repeat="individu in individusInfos" flex="40">
+		        <md-card-title>
+		          <md-card-title-text>
+		            <span class="md-headline">{{individu.prenom}} {{individu.nomUsage}}</span>
+		            <span class="md-subhead">Individu n°{{$index+1}}</span>
+		          </md-card-title-text>
+		          <md-card-title-media>
+		            <div class="md-media-sm card-media"></div>
+		          </md-card-title-media>
+		        </md-card-title>
+		      </md-card>
+
+		      <md-card ng-if="!individusInfos.length" flex="80">
+		        <md-card-title>
+		          <md-card-title-text>
+		            <span class="md-headline">Aucun individu</span>
+		            <span class="md-subhead">Vous pouvez en rajouter un en cliquant sur le bouton ci-dessous</span>
+		          </md-card-title-text>
+		          <md-card-title-media>
+		            <div class="md-media-sm card-media"></div>
+		          </md-card-title-media>
+		        </md-card-title>
+		      </md-card>
+ 				
+ 				</div>
+ 				<md-button ng-click="showCreateIndividu($event, false)" class="md-primary md-raised"> Ajouter un individu </md-button>
 		  </div>
 
 

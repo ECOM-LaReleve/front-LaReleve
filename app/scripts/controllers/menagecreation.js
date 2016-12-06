@@ -15,6 +15,8 @@ angular.module('laReleveApp')
       'Karma'
     ];
 
+    $scope.individusInfos = [];
+
     $scope.individus = ['boy', 'girl', 'dog', 'town', 'car', 'cat'].map(function(state) {
     	return {
           value: state.toLowerCase(),
@@ -46,12 +48,15 @@ angular.module('laReleveApp')
      * @param  {[type]} ev [description]
      * @return {[type]}    [description]
      */
-    $scope.showCreateIndividu = function(ev) {
+    $scope.showCreateIndividu = function(ev, isChefDeFamille) {
       $mdDialog.show({
         controller: createIndividuDialogController,
         templateUrl: 'views/createIndividuDialog.html',
         scope: $scope.$new(),
         targetEvent: ev,
+        locals: {
+          isChefDeFamille: isChefDeFamille
+       }
       })
       .then(function() {
         console.log('Create individu done !');
@@ -67,11 +72,8 @@ angular.module('laReleveApp')
      * @param  {[type]}
      * @return {[type]}
      */
-    function createIndividuDialogController($scope, $mdDialog) {
-      $scope.collabInfos = {};
-      $scope.collabInfos.technos = [{}];
-      $scope.technosCopies = [];
-      $scope.technosCopies[0] = $scope.technos;
+    function createIndividuDialogController($scope, $mdDialog, isChefDeFamille) {
+      $scope.isChefDeFamille = isChefDeFamille;
       $scope.hide = function() {
         $mdDialog.hide();
       };
@@ -80,12 +82,31 @@ angular.module('laReleveApp')
       };
       $scope.createIndividu = function(individuInfos) {
       
+        console.log("Creation d'un individu");
         console.log(individuInfos);
-        // $scope.addCollab(collabInfos);
-        // $mdDialog.hide();
+        $scope.saveIndividuInfo(individuInfos);
+        $mdDialog.hide();
         // $scope.showLoadingBar();
       };
+      $scope.createChefDeFamille = function(individuInfos) {
+
+        console.log("Creation d'un chef de famille");
+        console.log(individuInfos);
+        $scope.saveChefDeFamilleInfo(individuInfos);
+        $mdDialog.hide();
+
+      };
     }
+
+
+    $scope.saveChefDeFamilleInfo = function(chefDeFamilleInfos) {
+      $scope.chefDeFamilleInfos = chefDeFamilleInfos;
+    }
+
+    $scope.saveIndividuInfo = function(individuInfos) {
+      $scope.individusInfos.push(individuInfos);
+    }
+
 
 
 
