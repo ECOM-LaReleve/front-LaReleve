@@ -2,72 +2,76 @@
 	<md-sidenav id="infoMenageSidenav" layout="column" class="md-sidenav-left md-sidenav-list" md-component-id="nav" md-is-locked-open="$mdMedia('gt-xs')" md-is-open="firstLaunch">
 		<md-content class="animate-show" id="infoMenageContainer" ng-show="!loadingBar" layout="row" flex>
 			<md-card flex>
-			<md-card-header md-colors="::{backgroundColor: 'greyTheme-primary-400'}">
+				<md-card-header md-colors="::{backgroundColor: 'greyTheme-primary-400'}">
 					<md-card-header-text>
 						<span class="md-title">Ménage John</span>
 						<span class="md-subhead">Informations générales</span>
 					</md-card-header-text>
 				</md-card-header>
-
-				<md-content>
-					<md-list>
-						<md-divider ></md-divider>
-						<md-subheader class="md-no-sticky">Référent</md-subheader>
-						<md-list-item class="md-2-line">
-							<md-icon md-svg-icon="action:ic_assignment_ind_24px" class="name"></md-icon>
-							<div class="md-list-item-text">
-								<h3>Natalie Portman</h3>
-								<p>Service 1</p> 
-							</div>
-						</md-list-item>
-						<md-divider ng-if="!$last"></md-divider>
-						<md-subheader class="md-no-sticky">Logement</md-subheader>
-						<md-list-item class="md-2-line md-long-text">
-							<md-icon md-svg-icon="action:ic_home_24px" class="name"></md-icon>
-							<div class="md-list-item-text">
-								<h3>Adresse</h3>
-								<p>
-									56 Rue du Prieuré
-								</p>
-								<p>
-									38000 Grenoble
-								</p>
-							</div>
-						</md-list-item>
-						<md-list-item class="md-2-line md-long-text">
-							<md-icon md-svg-icon="action:ic_info_24px" class="name"></md-icon>
-							<div class="md-list-item-text">
-								<h3>Détails</h3>
-								<p>
-									5e à gauche
-								</p>
-								<p>
-									Digicode 5120
-								</p>
-								<p>
-									Escalier droite
-								</p>
-							</div>
-						</md-list-item>
-						<md-divider ng-if="!$last"></md-divider>
-						<md-subheader class="md-no-sticky">Date d'arrivée</md-subheader>
-						<md-datepicker ng-model="myDate" md-placeholder="12/10/2004" disabled></md-datepicker>
-						<md-divider ng-if="!$last"></md-divider>
-						<md-subheader class="md-no-sticky">Revenus</md-subheader>
-						<md-list-item class="md-2-line">
-							<md-icon md-svg-icon="action:ic_euro_symbol_24px" class="name"></md-icon>
-							<div class="md-list-item-text">
-								<h3>160 €</h3>
-								<p>RSA, Chômage</p>
-							</div>
-						</md-list-item>
-					</md-content>
+				<md-list>
+					<md-divider ></md-divider>
+					<md-subheader class="md-no-sticky">Référent</md-subheader>
+					<md-list-item class="md-2-line">
+						<md-icon md-svg-icon="action:ic_assignment_ind_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>Natalie Portman</h3>
+							<p>Service 1</p> 
+						</div>
+					</md-list-item>
+					<md-divider ng-if="!$last"></md-divider>
+					<md-subheader class="md-no-sticky">Logement</md-subheader>
+					<md-list-item class="md-2-line md-long-text">
+						<md-icon md-svg-icon="action:ic_home_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>Adresse</h3>
+							<p>
+								56 Rue du Prieuré
+							</p>
+							<p>
+								38000 Grenoble
+							</p>
+						</div>
+					</md-list-item>
+					<md-list-item class="md-2-line md-long-text">
+						<md-icon md-svg-icon="action:ic_info_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>Détails</h3>
+							<p>
+								5e à gauche
+							</p>
+							<p>
+								Digicode 5120
+							</p>
+							<p>
+								Escalier droite
+							</p>
+						</div>
+					</md-list-item>
+					<md-divider ng-if="!$last"></md-divider>
+					<md-subheader class="md-no-sticky">Date d'arrivée - Date de fin</md-subheader>
+					<!-- <md-datepicker ng-model="myDate" md-placeholder="12/10/2004" disabled></md-datepicker> -->
+					<md-list-item class="md-2-line">
+						<md-icon md-svg-icon="editor:ic_insert_invitation_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>12/10/2004</h3>
+							<p>Toujours présent</p> 
+						</div>
+					</md-list-item>
+					<md-divider ng-if="!$last"></md-divider>
+					<md-subheader class="md-no-sticky">Revenus</md-subheader>
+					<md-list-item class="md-2-line">
+						<md-icon md-svg-icon="action:ic_euro_symbol_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>160 €</h3>
+							<p>RSA, Chômage</p>
+						</div>
+					</md-list-item>
 				</md-card>
 			</md-content>
 		</md-sidenav>
 
-  <!-- <md-content> -->
-    <div>
+		<md-content layout-fill>
+			<div layout="row" layout-wrap layout-align="start start">
 				<md-card>
 					<md-card-title md-colors="::{backgroundColor: 'greyTheme-primary-200'}">
 						<md-card-title-text>
@@ -76,17 +80,19 @@
 						</md-card-title-text>
 					</md-card-title>
 					<md-card-content>
-					<md-list-item class="md-2-line">
-						<md-icon md-svg-icon="communication:ic_phone_24px" class="name"></md-icon>
-						<div class="md-list-item-text">
-							<h3>06 31 52 89 20</h3>
-							<p>Numéro de téléphone</p> 
-						</div>
-					</md-list-item>
-        </md-card-content>
+						<md-list-item class="md-2-line">
+							<md-icon md-svg-icon="communication:ic_phone_24px" class="name"></md-icon>
+							<div class="md-list-item-text">
+								<h3>06 31 52 89 20</h3>
+								<p>Numéro de téléphone</p> 
+							</div>
+						</md-list-item>
+					</md-card-content>
 					<md-card-actions layout="row" layout-align="end center">
-						<md-button>Editer</md-button>
-						<md-button>Plus de détails</md-button>
+						<md-button class="md-primary md-raised" ng-click="showTabDialog($event)" >
+				      Plus de détails
+				    </md-button>
+						<!-- <md-button>Plus de détails</md-button> -->
 					</md-card-actions>
 				</md-card>
 
@@ -94,13 +100,15 @@
 					<md-card-title md-colors="::{backgroundColor: 'greyTheme-primary-200'}">
 						<md-card-title-text>
 							<span class="md-headline">Janette Travolta</span>
-							<span class="md-subhead">Nom de JF : Travoltette</span>
+							<!-- <span class="md-subhead">Nom de JF : Travoltette</span> -->
 						</md-card-title-text>
 					</md-card-title>
 					<md-card-actions layout="row" layout-align="end center">
-						<md-button>Editer</md-button>
-						<md-button>Plus de détails</md-button>
+						<md-button class="md-primary md-raised" ng-click="showTabDialog($event)" >
+				      Plus de détails
+				    </md-button>
 					</md-card-actions>
 				</md-card>
-    </div>
+			</div>
+		</md-content>
 	</div>
