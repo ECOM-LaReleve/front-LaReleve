@@ -101,11 +101,11 @@ angular.module('laReleveApp')
 
     $scope.saveChefDeFamilleInfo = function(chefDeFamilleInfos) {
       $scope.chefDeFamilleInfos = chefDeFamilleInfos;
-    }
+    };
 
     $scope.saveIndividuInfo = function(individuInfos) {
       $scope.individusInfos.push(individuInfos);
-    }
+    };
 
 
 

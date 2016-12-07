@@ -1,17 +1,17 @@
 <div flex layout="row">
-  <md-sidenav id="infoMenageSidenav" layout="column" class="md-sidenav-left md-sidenav-list" md-component-id="nav" md-is-locked-open="$mdMedia('gt-xs')" md-is-open="firstLaunch">
-    <md-content class="animate-show" id="infoMenageContainer" ng-show="!loadingBar">
-      <md-card>
-      	<md-card-content>
-      		<h2>Ménage Michel</h2>
-      		<p>Informations sur la famille</p>
-      		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      	</md-card-content>
-      </md-card>
-    </md-content>
-  </md-sidenav>
+	<md-sidenav id="infoMenageSidenav" layout="column" class="md-sidenav-left md-sidenav-list" md-component-id="nav" md-is-locked-open="$mdMedia('gt-xs')" md-is-open="firstLaunch">
+		<md-content class="animate-show" id="infoMenageContainer" ng-show="!loadingBar">
+			<md-card>
+				<md-card-content>
+					<h2>Ménage Michel</h2>
+					<p>Informations sur la famille</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+				</md-card-content>
+			</md-card>
+		</md-content>
+	</md-sidenav>
 
-    <md-content layout="column" layout-fill>
+	<md-content layout="column" layout-fill>
       <!-- <md-toolbar id="right-toolbar" class="animate-show md-whiteframe-z1 toolbar" ng-class="{'md-hue-1':showSearch}">
         <div class="md-toolbar-tools">
           <md-button class="md-icon-button" ng-click="toggleSidenav('nav')" hide-gt-xs aria-label="Menu">
@@ -23,79 +23,103 @@
           </md-button>
         </div>
       </md-toolbar> -->
-        <div class="insetCustom"></div>
-        <div class="inset" hide-xs></div>
-        <div class="animate-show-in" layout-align="center center">
-          <div flex-gt-xs="95" flex-gt-lg="80" style="margin: auto;">
+      <div class="insetCustom"></div>
+      <div class="inset" hide-xs></div>
+      <div class="animate-show-in" layout-align="center center">
+      	<div flex-gt-xs="95" flex-gt-lg="80" style="margin: auto;">
 
-          	<md-toolbar md-theme="greyTheme" class="animate-show md-whiteframe-z1 toolbar md-hue-1">
-			        <div class="md-toolbar-tools">
+      		<md-toolbar md-theme="greyTheme" class="animate-show md-whiteframe-z1 toolbar md-hue-1">
+      			<div class="md-toolbar-tools">
 
-			        	<md-input-container>
-			        		<label>Actes</label>
-				          <md-select ng-model="ctrl.acte">
-				          	<md-option>Aucun</md-option>
-				            <md-option ng-repeat="acte in [1,2,3,4,5,6]" ng-value="acte">
-				              Acte n°{{acte}}
-				            </md-option>
-				          </md-select>
-			        	</md-input-container>
-			          <span flex></span>
-			          <md-input-container>
-			          	<label>Prestations</label>
-				          <md-select ng-model="ctrl.prestation">
-				          	<md-option>Aucune</md-option>
-				            <md-option ng-repeat="prestation in [1,2,3,4,5,6]" ng-value="prestation">
-				              Prestation n°{{prestation}}
-				            </md-option>
-				          </md-select>
-			          </md-input-container>
-			          <span flex></span>
-			          <md-input-container>
-			          	<label>Besoins</label>
-				          <md-select ng-model="ctrl.besoin">
-				          	<md-option>Aucun</md-option>
-				            <md-option ng-repeat="besoin in [1,2,3,4,5,6]" ng-value="besoin">
-				              Besoin n°{{besoin}}
-				            </md-option>
-				          </md-select>
-			          </md-input-container>
-			          <span flex></span>
-			          <md-datepicker ng-model="myDate" md-placeholder="Date entre le"></md-datepicker>
-			          
-			        </div>
-			      </md-toolbar>
+      				<md-input-container>
+      					<label>Actes</label>
+      					<md-select ng-model="ctrl.acte">
+      						<md-option>Aucun</md-option>
+      						<md-option ng-repeat="acte in [1,2,3,4,5,6]" ng-value="acte">
+      							Acte n°{{acte}}
+      						</md-option>
+      					</md-select>
+      				</md-input-container>
+      				<span flex></span>
+      				<md-input-container>
+      					<label>Prestations</label>
+      					<md-select ng-model="ctrl.prestation">
+      						<md-option>Aucune</md-option>
+      						<md-option ng-repeat="prestation in [1,2,3,4,5,6]" ng-value="prestation">
+      							Prestation n°{{prestation}}
+      						</md-option>
+      					</md-select>
+      				</md-input-container>
+      				<span flex></span>
+      				<md-input-container>
+      					<label>Besoins</label>
+      					<md-select ng-model="ctrl.besoin">
+      						<md-option>Aucun</md-option>
+      						<md-option ng-repeat="besoin in [1,2,3,4,5,6]" ng-value="besoin">
+      							Besoin n°{{besoin}}
+      						</md-option>
+      					</md-select>
+      				</md-input-container>
+      				<span flex></span>
+      				<md-datepicker ng-model="myDate" md-placeholder="Date entre le"></md-datepicker>
+      				
+      			</div>
+      		</md-toolbar>
 
-          	<md-subheader class="md-no-sticky">Urgent</md-subheader>
-          	<md-card>
-	            <md-list>
-	             <md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5] track by $index">
-	                <div class="md-list-item-text compact">
-	                  <h3>Acte n°{{elem}}</h3>
-	                  <p>J'adore les kinder pingui !</p>
-	                </div>
-	                <md-icon class="taskNotOk" md-svg-icon="alert:ic_error_24px" aria-label="task not ok icon"></md-icon>
-				  				<md-divider ng-if="!$last"></md-divider>
-	             </md-list-item>
-	            </md-list>
-	          </md-card>
+      		<md-subheader class="md-no-sticky">Urgent</md-subheader>
+      		<md-card>
+      			<md-list>
+      				<md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5] track by $index">
+      					<div class="md-list-item-text compact">
+      						<h3>Acte n°{{elem}}</h3>
+      						<p>J'adore les kinder pingui !</p>
+      					</div>
+      					<md-icon class="taskNotOk" md-svg-icon="alert:ic_error_24px" aria-label="task not ok icon"></md-icon>
+      					<md-divider ng-if="!$last"></md-divider>
+      				</md-list-item>
+      			</md-list>
+      		</md-card>
 
-	          <md-subheader class="md-no-sticky">Autres éléments</md-subheader>
-	          <md-card>
-	            <md-list>
-	             <md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5,11,12,13,14,15] track by $index">
-	                <div class="md-list-item-text compact">
-	                  <h3>Acte n°{{elem}}</h3>
-	                  <p>J'adore les kinder pingui !</p>
-	                </div>
-				  				<md-divider ng-if="!$last"></md-divider>
-	             </md-list-item>
-	            </md-list>
-	          </md-card>
+      		<md-subheader class="md-no-sticky">Autres éléments</md-subheader>
+      		<md-card>
+      			<md-list>
+      				<md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5,11,12,13,14,15] track by $index">
+      					<div class="md-list-item-text compact">
+      						<h3>Acte n°{{elem}}</h3>
+      						<p>J'adore les kinder pingui !</p>
+      					</div>
+      					<md-divider ng-if="!$last"></md-divider>
+      				</md-list-item>
+      			</md-list>
+      		</md-card>
 
-	          <div class="inset" hide-xs></div>
+      		<md-fab-speed-dial id="addBesoin" md-direction="up" class="md-scale">
+      			<md-fab-trigger>
+      				<md-button aria-label="menu" class="md-fab md-primary">
+      					<md-icon md-svg-icon="content:ic_add_24px" aria-label="add besoin"></md-icon>
+      				</md-button>
+      			</md-fab-trigger>
 
-          </div>
+      			<md-fab-actions>
+      				<md-button aria-label="Acte" class="md-fab md-raised md-mini" ng-click="showAddActe()">
+      					<md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
+      						Acte
+      					</md-tooltip>
+      					A
+      				</md-button>
+      				<md-button aria-label="Prestation" class="md-fab md-raised md-mini">
+      					<md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
+      						Prestation
+      					</md-tooltip>
+      					P
+      				</md-button>
+      			</md-fab-actions>
+      		</md-fab-speed-dial>
+
+      		<div class="inset" hide-xs></div>
+
+
+      	</div>
       </div>
     </md-content>
-</div>
+  </div>
