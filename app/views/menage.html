@@ -1,13 +1,75 @@
 <div flex layout="row">
 	<md-sidenav id="infoMenageSidenav" layout="column" class="md-sidenav-left md-sidenav-list" md-component-id="nav" md-is-locked-open="$mdMedia('gt-xs')" md-is-open="firstLaunch">
 		<md-content class="animate-show" id="infoMenageContainer" ng-show="!loadingBar">
-			<md-card>
-				<md-card-content>
-					<h2>Ménage Michel</h2>
-					<p>Informations sur la famille</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-				</md-card-content>
-			</md-card>
+			<md-card flex>
+				<md-card-header md-colors="::{backgroundColor: 'greyTheme-primary-400'}">
+					<md-card-header-text>
+						<span class="md-title">Ménage DUPONT</span>
+						<span class="md-subhead">Informations générales</span>
+						<md-button style="position: absolute; left: 260px;" class="md-icon-button" aria-label="Search" ng-click="go('/menageInfos')">
+		          <md-icon md-svg-icon="action:ic_launch_24px" aria-label="Search"></md-icon>
+		        </md-button>
+					</md-card-header-text>
+				</md-card-header>
+				<md-list>
+					<md-divider ></md-divider>
+					<md-subheader class="md-no-sticky">Référent</md-subheader>
+					<md-list-item class="md-2-line">
+						<md-icon md-svg-icon="action:ic_assignment_ind_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>Régis RAMEL</h3>
+							<p>Service 1</p> 
+						</div>
+					</md-list-item>
+					<md-divider ng-if="!$last"></md-divider>
+					<md-subheader class="md-no-sticky">Logement</md-subheader>
+					<md-list-item class="md-2-line md-long-text">
+						<md-icon md-svg-icon="action:ic_home_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>Adresse</h3>
+							<p>
+								56 Rue du Prieuré
+							</p>
+							<p>
+								38000 Grenoble
+							</p>
+						</div>
+					</md-list-item>
+					<md-list-item class="md-2-line md-long-text">
+						<md-icon md-svg-icon="action:ic_info_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>Détails</h3>
+							<p>
+								5e à gauche
+							</p>
+							<p>
+								Digicode 5120
+							</p>
+							<p>
+								Escalier droite
+							</p>
+						</div>
+					</md-list-item>
+					<md-divider ng-if="!$last"></md-divider>
+					<md-subheader class="md-no-sticky">Date d'arrivée - Date de fin</md-subheader>
+					<!-- <md-datepicker ng-model="myDate" md-placeholder="12/10/2004" disabled></md-datepicker> -->
+					<md-list-item class="md-2-line">
+						<md-icon md-svg-icon="editor:ic_insert_invitation_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>12/10/2004</h3>
+							<p>Toujours présent</p> 
+						</div>
+					</md-list-item>
+					<md-divider ng-if="!$last"></md-divider>
+					<md-subheader class="md-no-sticky">Revenus</md-subheader>
+					<md-list-item class="md-2-line">
+						<md-icon md-svg-icon="action:ic_euro_symbol_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>160 €</h3>
+							<p>RSA, Chômage</p>
+						</div>
+					</md-list-item>
+				</md-card>
 		</md-content>
 	</md-sidenav>
 
@@ -69,10 +131,11 @@
       		<md-subheader class="md-no-sticky">Urgent</md-subheader>
       		<md-card>
       			<md-list>
-      				<md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5] track by $index">
+      				<md-list-item class="md-2-line" ng-repeat="elem in [1,2,3] track by $index">
       					<div class="md-list-item-text compact">
-      						<h3>Acte n°{{elem}}</h3>
-      						<p>J'adore les kinder pingui !</p>
+      						<h3 ng-if="$index % 2 == 0">Acte n°{{elem}}</h3>
+      						<h3 ng-if="$index % 2 != 0">Prestation n°{{elem}}</h3>
+      						<p>Date d'échéance: 10/12/2016</p>
       					</div>
       					<md-icon class="taskNotOk" md-svg-icon="alert:ic_error_24px" aria-label="task not ok icon"></md-icon>
       					<md-divider ng-if="!$last"></md-divider>
@@ -83,10 +146,10 @@
       		<md-subheader class="md-no-sticky">Autres éléments</md-subheader>
       		<md-card>
       			<md-list>
-      				<md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5,11,12,13,14,15] track by $index">
+      				<md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5,6,7,8,9] track by $index">
       					<div class="md-list-item-text compact">
       						<h3>Acte n°{{elem}}</h3>
-      						<p>J'adore les kinder pingui !</p>
+      						<p>Date d'échéance: 0{{elem}}/01/2017</p>
       					</div>
       					<md-divider ng-if="!$last"></md-divider>
       				</md-list-item>

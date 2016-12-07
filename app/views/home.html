@@ -59,10 +59,10 @@
             <md-subheader class="md-no-sticky">Urgent</md-subheader>
             <md-card>
               <md-list>
-               <md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5] track by $index" ng-click="go('/menage')">
+               <md-list-item class="md-2-line" ng-repeat="elem in ['DUPONT', 'RAINAUT', 'NOUGUIER', 'NIOGRET', 'LECORPS'] track by $index" ng-click="go('/menage')">
                   <div class="md-list-item-text compact">
-                    <h3>Ménage n°{{elem}}</h3>
-                    <p>J'adore les kinder Bueno !</p>
+                    <h3>Ménage {{elem}}</h3>
+                    <p>Date d'échéance la plus proche: 0{{$index+1}}/12/2016</p>
                   </div>
                   <md-icon class="taskNotOk" md-svg-icon="alert:ic_error_24px" aria-label="task not ok icon"></md-icon>
                   <md-divider ng-if="!$last"></md-divider>
@@ -73,10 +73,10 @@
             <md-subheader class="md-no-sticky">Autres éléments</md-subheader>
             <md-card>
               <md-list>
-               <md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5,11,12,13,14,15] track by $index" ng-click="go('/menage')">
+               <md-list-item class="md-2-line" ng-repeat="elem in ['MARTIN','BERNARD','THOMAS','PETIT','ROBERT','RICHARD','DURAND','DUBOIS','MOREAU','LAURENT','SIMON','MICHEL','LEFEBVRE','ROUX','DAVID','MOREL','GIRARD','BONNET','DUPONT','LAMBERT','FONTAINE'] track by $index" ng-click="go('/menage')">
                   <div class="md-list-item-text compact">
-                    <h3>Ménage n°{{elem}}</h3>
-                    <p>J'adore les kinder Bueno !</p>
+                    <h3>Ménage {{elem}}</h3>
+                    <p>Date d'échéance la plus proche: {{$index+10}}/01/2017</p>
                   </div>
                   <md-divider ng-if="!$last"></md-divider>
                </md-list-item>
