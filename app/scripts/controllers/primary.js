@@ -8,7 +8,7 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('PrimaryCtrl', ['$scope','$mdSidenav', '$location', 'WebServices', function ($scope, $mdSidenav, $location, WebServices) {
+  .controller('PrimaryCtrl', ['$scope','$mdSidenav', '$location', function ($scope, $mdSidenav, $location) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -17,7 +17,7 @@ angular.module('laReleveApp')
 
     $scope.locationExposer = function() {
     	return $location;
-    }
+    };
 
     /**
      * Allow to toggle a sidenav identified by its id

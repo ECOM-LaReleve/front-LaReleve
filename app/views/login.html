@@ -27,9 +27,10 @@
             </md-checkbox>
           </md-input-container>
         </form>
+        <md-progress-circular id="loadingLogin" ng-show="loading" md-mode="indeterminate"></md-progress-circular>
       </md-card-content>
       <md-card-actions layout="column" layout-align="center">
-        <md-button ng-click="go('/')" ng-disabled="loginForm.$invalid" class="md-raised md-cornered md-primary">Se connecter</md-button>
+        <md-button ng-click="loginFunction(username,password)" ng-disabled="loginForm.$invalid" class="md-raised md-cornered md-primary">Se connecter</md-button>
       </md-card-actions>
     </md-card>
 
