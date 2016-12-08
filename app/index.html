@@ -29,21 +29,22 @@
           <md-icon md-svg-icon="navigation:ic_menu_24px" aria-label="Menu"></md-icon>
         </md-button> -->
         <h3 ng-click="go('/')">
-          La Relève - Accueil
+          La Relève
         </h3>
-        <span flex="10"></span>
+        <span flex="15"></span>
         <md-input-container flex="50" id='menageSearchInputContainer' md-theme="input">
           <label>&nbsp;</label>
+          <md-icon md-svg-icon="action:ic_search_24px" aria-label="Search"></md-icon>
           <input id="menageSearchInput" ng-model="menageSearch" placeholder="Rechercher un ménage">
         </md-input-container>
         <span flex></span>        
 
-        <!-- Search and menus icons -->
-        <md-button class="md-icon-button" aria-label="Search" ng-click="toggleSearch()">
-          <md-icon md-svg-icon="action:ic_search_24px" aria-label="Search"></md-icon>
-        </md-button>
+        <!-- Menu icon -->
         <md-button class="md-icon-button" aria-label="Open Settings" ng-click="showListBottomSheet($event)">
           <md-icon md-svg-icon="navigation:ic_more_vert_24px" aria-label="More"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Open Settings" ng-click="showListBottomSheet($event)">
+          <md-icon class="md-avatar"  md-svg-icon="avatars:svg-1" aria-label="avatar"></md-icon>
         </md-button>
       </div>
     </md-toolbar>

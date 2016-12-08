@@ -129,6 +129,16 @@ md-card-header-text > h2 {
   margin-bottom: auto;
 }
 
+/*// Round avatar*/
+.md-avatar > svg {
+  border-radius: 50%;
+}
+
+/*md-sidenav .md-avatar {
+  height: 64px;
+  width: 64px;
+}*/
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
