@@ -15,6 +15,10 @@ angular.module('laReleveApp')
       'Karma'
     ];
 
+    $scope.locationExposer = function() {
+    	return $location;
+    }
+
     /**
      * Allow to toggle a sidenav identified by its id
      * @param  {[type]} menuId [description]
@@ -31,7 +35,9 @@ angular.module('laReleveApp')
 		 */
 	  $scope.go = function (path) {
 	  	if ($location.path() === path) {
-	  		$scope.hideLoadingBar();
+	  		console.log("same URL, not changing view");
+	  		//$scope.hideLoadingBar();
+	  		
 	  	} else {
 	    	$location.path(path);
 	    }

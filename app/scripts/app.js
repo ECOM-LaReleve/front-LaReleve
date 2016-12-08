@@ -61,6 +61,11 @@ angular
         controller: 'MenagecreationCtrl',
         controllerAs: 'menageCreation'
       })
+      .when('/menageInfos', {
+        templateUrl: 'views/menageinfos.html',
+        controller: 'MenageinfosCtrl',
+        controllerAs: 'menageInfos'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -135,9 +140,9 @@ angular
       .iconSet('navigation', '../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-navigation.svg', 24)
       .iconSet('notification', '../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-notification.svg', 24)
       .iconSet('social', '../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-social.svg', 24)
-      .iconSet('toggle', '../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-toggle.svg', 24);
+      .iconSet('toggle', '../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-toggle.svg', 24)
 
       // Illustrated user icons used in the docs https://material.angularjs.org/latest/#/demo/material.components.gridList
-      //.iconSet('avatars', 'https://raw.githubusercontent.com/angular/material/master/docs/app/icons/avatar-icons.svg', 24)
+      .iconSet('avatars', '../images/avatar-icons.svg', 24);
       //.defaultIconSet('../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-action.svg', 24);
   });

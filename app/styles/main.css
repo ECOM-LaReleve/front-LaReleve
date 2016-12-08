@@ -111,7 +111,7 @@ md-card md-list {
   max-width: 400px;
 }
 
-#addMenage {
+#addMenage, #addBesoin {
   top: auto;
   right: 20px;
   bottom: 20px;
@@ -129,6 +129,15 @@ md-card-header-text > h2 {
   margin-bottom: auto;
 }
 
+/*// Round avatar*/
+.md-avatar > svg {
+  border-radius: 50%;
+}
+
+/*md-sidenav .md-avatar {
+  height: 64px;
+  width: 64px;
+}*/
 
 
 /* Responsive: Portrait tablets and up */
