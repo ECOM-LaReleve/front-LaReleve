@@ -25,6 +25,7 @@ angular.module('laReleveApp')
           $location.path('/');
 	      } else {
           $scope.error = 'Username or password is incorrect';
+          console.log($scope.error);
           $scope.loading = false;
 	      }
 		  });
