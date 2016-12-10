@@ -63,7 +63,9 @@ angular.module('laReleveApp')
             delete:'/users/:id',
             list:'/users',
             get:'/utilisateurs'
-
+        }, 
+        authentication: {
+            login:'/auth/login'
         }
     };
 

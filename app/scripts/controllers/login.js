@@ -8,10 +8,27 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('LoginCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('LoginCtrl', ['$scope', '$location', 'AuthenticationFactory' , function ($scope, $location, AuthenticationFactory) {
+    
+ 
+		function initController() {
+		  // reset login status
+		  AuthenticationFactory.Logout();
+		}
+
+    initController();
+
+		$scope.loginFunction = function () {
+		  $scope.loading = true;
+		  AuthenticationFactory.Login($scope.username, $scope.password, function (result) {
+	      if (result === true) {
+          $location.path('/');
+	      } else {
+          $scope.error = 'Username or password is incorrect';
+          console.log($scope.error);
+          $scope.loading = false;
+	      }
+		  });
+		};
+
+  }]);

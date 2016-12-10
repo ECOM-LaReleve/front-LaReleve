@@ -139,6 +139,10 @@ md-card-header-text > h2 {
   width: 64px;
 }*/
 
+#loadingLogin {
+  margin: auto;
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

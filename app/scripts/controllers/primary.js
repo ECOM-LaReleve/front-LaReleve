@@ -8,7 +8,7 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('PrimaryCtrl', ['$scope','$mdSidenav', '$location', 'WebServices', function ($scope, $mdSidenav, $location, WebServices) {
+  .controller('PrimaryCtrl', ['$scope','$mdSidenav', '$location', 'AuthenticationFactory', function ($scope, $mdSidenav, $location, AuthenticationFactory) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -17,6 +17,12 @@ angular.module('laReleveApp')
 
     $scope.locationExposer = function() {
     	return $location;
+    };
+
+    $scope.logoutPrimary = function() {
+    	// reset login status
+		  AuthenticationFactory.Logout();
+		  $location.path('/login');
     }
 
     /**

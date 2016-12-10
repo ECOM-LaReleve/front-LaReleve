@@ -31,7 +31,7 @@ angular.module('laReleveApp')
     };
 
 
-    //$scope.utilisateursList();
+    $scope.utilisateursList();
 
 
 

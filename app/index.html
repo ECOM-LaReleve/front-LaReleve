@@ -39,13 +39,30 @@
         </md-input-container>
         <span flex></span>        
 
-        <!-- Menu icon -->
+        <!-- Menu and avatar icons -->
         <md-button class="md-icon-button" aria-label="Open Settings" ng-click="showListBottomSheet($event)">
           <md-icon md-svg-icon="navigation:ic_more_vert_24px" aria-label="More"></md-icon>
         </md-button>
-        <md-button class="md-icon-button" aria-label="Open Settings" ng-click="showListBottomSheet($event)">
-          <md-icon class="md-avatar"  md-svg-icon="avatars:svg-1" aria-label="avatar"></md-icon>
-        </md-button>
+        <md-menu-bar>
+          <md-menu>
+            <md-button class="md-icon-button" aria-label="Open Settings" ng-click="$mdOpenMenu()">
+              <md-icon class="md-avatar"  md-svg-icon="avatars:svg-1" aria-label="avatar"></md-icon>
+            </md-button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button ng-click="logoutPrimary()">
+                  Déconnexion
+                </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item>
+                <md-button disabled="disabled">
+                  Rôles
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </md-menu-bar>
       </div>
     </md-toolbar>
 
@@ -82,6 +99,7 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -97,6 +115,7 @@
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/menagecreation.js"></script>
         <script src="scripts/controllers/menageinfos.js"></script>
+        <script src="scripts/services/authenticationfactory.js"></script>
         <!-- endbuild -->
 </body>
 </html>
