@@ -1,0 +1,31 @@
+sudo: required
+services:
+  - docker
+
+language: node
+
+before_install:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+
+before_script:
+  - npm install grunt-cli bower -g
+  - PATH=$(npm bin):$PATH
+  - npm install && bower install
+
+script:
+  - grunt build
+  - docker build -t gattazr/lareleve-front:latest .
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+        docker tag gattazr/lareleve-front:latest gattazr/lareleve-front:stable;
+        docker push gattazr/lareleve-front:stable;
+    fi
+  - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+        docker push gattazr/lareleve-front:latest;
+    fi
+
+branches:
+  only:
+    - master
+    - develop
