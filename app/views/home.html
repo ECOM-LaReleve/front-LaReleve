@@ -35,8 +35,8 @@
                   <label>Prestations</label>
                   <md-select ng-model="ctrl.prestation">
                     <md-option>Aucune</md-option>
-                    <md-option ng-repeat="prestation in [1,2,3,4,5,6]" ng-value="prestation">
-                      Prestation n°{{prestation}}
+                    <md-option ng-repeat="prestation in prestations" ng-value="prestation">
+                      {{prestation.libelle}}
                     </md-option>
                   </md-select>
                 </md-input-container>

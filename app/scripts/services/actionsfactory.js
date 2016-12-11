@@ -77,4 +77,56 @@ angular.module('laReleveApp')
       }
     });
   }])
+
+  .factory('PrestationsFactory', ['$resource', '$rootScope', 'WebServices', function ($resource, $rootScope, WebServices) {
+    var userWebservices = WebServices.webServicesGroup;
+    return $resource(
+      userWebservices.prestations.get, //urls
+      {},                                 //params
+      { getPrestations : {                    //actions
+        method: 'GET',
+        interceptor: {
+          responseError: function (data) {
+            $rootScope.$broadcast('requestResponseError', data);  //broadcast an event if an error occurred
+          }
+        },
+        headers: {'Content-Type': 'application/json'},
+        isArray: true
+      }
+    });
+  }])
+
+  .factory('PrestationsByIdFactory', ['$resource', '$rootScope', 'WebServices', function ($resource, $rootScope, WebServices) {
+    var userWebservices = WebServices.webServicesGroup;
+    return $resource(
+      userWebservices.prestations.getById, //urls
+      {id:'@id'},                             //params
+      { getPrestationsById : {                    //actions
+        method: 'GET',
+        interceptor: {
+          responseError: function (data) {
+            $rootScope.$broadcast('requestResponseError', data);  //broadcast an event if an error occurred
+          }
+        },
+        headers: {'Content-Type': 'application/json'}
+      }
+    });
+  }])
+
+  .factory('PrestationsByServiceFactory', ['$resource', '$rootScope', 'WebServices', function ($resource, $rootScope, WebServices) {
+    var userWebservices = WebServices.webServicesGroup;
+    return $resource(
+      userWebservices.prestations.getByService, //urls
+      {serviceId:'@id'},                             //params
+      { getPrestationsByService : {                    //actions
+        method: 'GET',
+        interceptor: {
+          responseError: function (data) {
+            $rootScope.$broadcast('requestResponseError', data);  //broadcast an event if an error occurred
+          }
+        },
+        headers: {'Content-Type': 'application/json'}
+      }
+    });
+  }])
   ;
