@@ -117,7 +117,7 @@ angular.module('laReleveApp')
     var userWebservices = WebServices.webServicesGroup;
     return $resource(
       userWebservices.prestations.getByService, //urls
-      {serviceId:'@id'},                             //params
+      {id:'@id'},                             //params
       { getPrestationsByService : {                    //actions
         method: 'GET',
         interceptor: {
