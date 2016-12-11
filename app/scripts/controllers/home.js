@@ -8,7 +8,7 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('HomeCtrl', ['$scope', 'ExempleFactory', 'BesoinsFactory', 'ActesFactory', function ($scope, ExempleFactory, BesoinsFactory, ActesFactory) {
+  .controller('HomeCtrl', ['$scope', 'ExempleFactory', 'BesoinsFactory', 'ActesFactory', 'PrestationsFactory', function ($scope, ExempleFactory, BesoinsFactory, ActesFactory, PrestationsFactory) {
     
     /**
      * Initialize Utilisateurs list
@@ -55,6 +55,21 @@ angular.module('laReleveApp')
       });
     };
 
+    /**
+     * Initialize Prestations list
+     */
+    $scope.prestationsList = function() {
+       PrestationsFactory.getPrestations(function (prestations){
+        prestations.$promise.then(function(prestations) {
+          $scope.prestations = prestations;
+
+          console.log($scope.prestations);
+          //Hide the loading bar when the data are available
+          //$scope.hideLoadingBar();
+        });
+      });
+    };
+
 
     $scope.utilisateursList();
 
@@ -62,5 +77,6 @@ angular.module('laReleveApp')
 
     $scope.actesList();
 
+    $scope.prestationsList();
 
   }]);
