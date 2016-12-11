@@ -18,6 +18,11 @@
     //The list of all routes that the front can help (just an exemple, need changes)
     //TODO: Put the right routes !
     var webservicesList = {
+      utilisateurs:{
+        get:'/utilisateurs',
+        getById:'/utilisateurs/:id',
+        getByService:'/utilisateurs?idservice=:id'
+     },
       besoins: {
        get:'/besoins',
        getById:'/besoins/:id'
@@ -31,21 +36,38 @@
        getById:'/prestations/:id',
        getByService:'/prestations?idservice=:id'
      },
-      utilisateurs:{
-        get:'/utilisateurs',
-        getById:'/utilisateurs/:id',
-        getByService:'/utilisateurs?idservice=:id'
-     },
       individus: {
         get:'/individus',
+        create:'/individus',
         getById:'/individus/:id',
         getByMenageId:'/individus?menage=:id',
         getByMenageName:'/individus?menage=:name'
      },
       menages: {
         get:'/menages',
+        create:'/menages',
         getById:'/menages/:id',
         getByReferantId:'/menages?idreferant=:id'
+     },
+      prestationsrealisees: {
+        get:'/prestationsrealisees',
+        create:'/prestationsrealisees',
+        getById:'/prestationsrealisees/:id',
+        getByMenageId:'/prestationsrealisees?menage=:id',
+        getByIndividuId:'/prestationsrealisees?individu=:id',
+        getByUtilisateurId:'/prestationsrealisees?utilisateur=:id',
+        getByPrestationId:'/prestationsrealisees?prestation=:id'
+     },
+      actesrealises: {
+        get:'/actesrealises',
+        create:'/actesrealises',
+        getById:'/actesrealises/:id',
+        getByMenageId:'/actesrealises?menage=:id',
+        getByIndividuId:'/actesrealises?individu=:id',
+        getByUtilisateurId:'/actesrealises?utilisateur=:id',
+        getByActeId:'/actesrealises?acte=:id',
+        getByBesoinId:'/actesrealises?besoin=:id',
+        getByPrestationId:'/actesrealises?prestation=:id'
      },
       authentication: {
        login:'/auth/login'
