@@ -5,8 +5,8 @@
 
     <md-card class="slideBottomToTop" ng-show="!authenticated">
       <img ng-src="images/Logo_LA_RELEVE.jpg" class="md-card-image logoLogin" alt="logo La Relève">
-      <md-card-content>
-        <form ng-submit="log()" name="loginForm" layout="column">
+      <form ng-submit="loginFunction(username,password)" name="loginForm" layout="column">
+        <md-card-content>
           <md-input-container class="md-block">
             <label>Nom d'utilisateur</label>
             <input required type="text" id="username" name="username" ng-model="username" md-autofocus>
@@ -21,17 +21,17 @@
               <div ng-message="required">This is required.</div>
             </div>
           </md-input-container>
-          <md-input-container class="md-block">
+          <!-- <md-input-container class="md-block">
             <md-checkbox ng-model="rememberme" aria-label="Checkbox">
               Rester connecté
             </md-checkbox>
-          </md-input-container>
-        </form>
-        <md-progress-circular id="loadingLogin" ng-show="loading" md-mode="indeterminate"></md-progress-circular>
-      </md-card-content>
-      <md-card-actions layout="column" layout-align="center">
-        <md-button ng-click="loginFunction(username,password)" ng-disabled="loginForm.$invalid" class="md-raised md-cornered md-primary">Se connecter</md-button>
-      </md-card-actions>
+          </md-input-container> -->
+          <md-progress-circular id="loadingLogin" ng-show="loading" md-mode="indeterminate"></md-progress-circular>
+        </md-card-content>
+        <md-card-actions layout="column" layout-align="center">
+          <md-button type="submit" ng-click="loginFunction(username,password)" ng-disabled="loginForm.$invalid" class="md-raised md-cornered md-primary">Se connecter</md-button>
+        </md-card-actions>
+      </form>
     </md-card>
 
   </div>

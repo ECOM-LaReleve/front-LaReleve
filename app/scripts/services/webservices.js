@@ -40,8 +40,8 @@
         get:'/individus',
         create:'/individus',
         getById:'/individus/:id',
-        getByMenageId:'/individus?menage=:id',
-        getByMenageName:'/individus?menage=:name'
+        getByMenageId:'/individus?idmenage=:id',
+        getByMenageName:'/individus?idmenage=:name'
      },
       menages: {
         get:'/menages',

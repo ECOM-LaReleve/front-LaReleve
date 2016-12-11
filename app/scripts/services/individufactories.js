@@ -26,19 +26,20 @@ angular.module('laReleveApp')
     });
   }])
 
-  .factory('IndividusByMenageFactory', ['$resource', '$rootScope', 'WebServices', function ($resource, $rootScope, WebServices) {
+  .factory('IndividusByMenageIdFactory', ['$resource', '$rootScope', 'WebServices', function ($resource, $rootScope, WebServices) {
     var userWebservices = WebServices.webServicesGroup;
     return $resource(
-      userWebservices.prestationsrealisees.getByMenageId, //urls
+      userWebservices.individus.getByMenageId, //urls
       {id:'@id'},                             //params
-      { getIndividusByMenage : {                    //actions
+      { getIndividusByMenageId : {                    //actions
         method: 'GET',
         interceptor: {
           responseError: function (data) {
             $rootScope.$broadcast('requestResponseError', data);  //broadcast an event if an error occurred
           }
         },
-        headers: {'Content-Type': 'application/json'}
+        headers: {'Content-Type': 'application/json'},
+        isArray: true
       }
     });
   }])

@@ -8,16 +8,13 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('MenageCtrl', ['$scope', '$q', '$timeout', '$mdDialog', '$routeParams', 'PrestationsRealiseesByMenageFactory', 'ActesRealisesByMenageFactory', 'MenagesByIdFactory', function ($scope, $q, $timeout, $mdDialog, $routeParams, PrestationsRealiseesByMenageFactory, ActesRealisesByMenageFactory, MenagesByIdFactory) {
+  .controller('MenageCtrl', ['$scope', '$q', '$timeout', '$mdDialog', '$routeParams', 'PrestationsRealiseesByMenageFactory', 'ActesRealisesByMenageFactory', 'MenagesByIdFactory', 'IndividusByMenageIdFactory', function ($scope, $q, $timeout, $mdDialog, $routeParams, PrestationsRealiseesByMenageFactory, ActesRealisesByMenageFactory, MenagesByIdFactory, IndividusByMenageIdFactory) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
-    console.log($scope);
-
-    console.log($routeParams.id);
     var id = $routeParams.id;
 
      /**
@@ -28,7 +25,6 @@ angular.module('laReleveApp')
         prestations.$promise.then(function(prestations) {
           $scope.prestations = prestations;
 
-          console.log($scope.prestations);
           //Hide the loading bar when the data are available
           //$scope.hideLoadingBar();
         });
@@ -43,7 +39,6 @@ angular.module('laReleveApp')
         actes.$promise.then(function(actes) {
           $scope.actes = actes;
 
-          console.log($scope.actes);
           //Hide the loading bar when the data are available
           //$scope.hideLoadingBar();
         });
@@ -58,7 +53,19 @@ angular.module('laReleveApp')
         menageInfos.$promise.then(function(menageInfos) {
           $scope.menageInfos = menageInfos;
 
-          console.log($scope.menageInfos);
+          //Hide the loading bar when the data are available
+          //$scope.hideLoadingBar();
+        });
+      });
+    };
+
+     /**
+     * Initialize prestations realisees list by id menage
+     */
+    $scope.getIndividusFromMenageById = function(id) {
+       IndividusByMenageIdFactory.getIndividusByMenageId({id:id},function (individus){
+        individus.$promise.then(function(individus) {
+          $scope.individus = individus;
           //Hide the loading bar when the data are available
           //$scope.hideLoadingBar();
         });
@@ -68,6 +75,7 @@ angular.module('laReleveApp')
     $scope.prestationRealiseesListByIdMenage(id);
     $scope.actesRealisesListByIdMenage(id);
     $scope.infoMenageById(id);
+    $scope.getIndividusFromMenageById(id);
 
 
     /**
