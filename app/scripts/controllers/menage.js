@@ -15,6 +15,8 @@ angular.module('laReleveApp')
       'Karma'
     ];
 
+    console.log($scope);
+
     console.log($routeParams.id);
     var id = $routeParams.id;
 

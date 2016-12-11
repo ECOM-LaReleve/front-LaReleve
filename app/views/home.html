@@ -25,7 +25,7 @@
                   <label>Actes</label>
                   <md-select ng-model="ctrl.acte">
                     <md-option>Aucun</md-option>
-                    <md-option ng-repeat="acte in actes" ng-value="acte">
+                    <md-option ng-repeat="acte in actesTypes" ng-value="acte">
                       {{acte.libelle}}
                     </md-option>
                   </md-select>
@@ -35,7 +35,7 @@
                   <label>Prestations</label>
                   <md-select ng-model="ctrl.prestation">
                     <md-option>Aucune</md-option>
-                    <md-option ng-repeat="prestation in prestations" ng-value="prestation">
+                    <md-option ng-repeat="prestation in prestationsTypes" ng-value="prestation">
                       {{prestation.libelle}}
                     </md-option>
                   </md-select>
@@ -45,7 +45,7 @@
                   <label>Besoins</label>
                   <md-select ng-model="ctrl.besoin">
                     <md-option>Aucun</md-option>
-                    <md-option ng-repeat="besoin in besoins" ng-value="besoin">
+                    <md-option ng-repeat="besoin in besoinsTypes" ng-value="besoin">
                       {{besoin.libelle}}
                     </md-option>
                   </md-select>

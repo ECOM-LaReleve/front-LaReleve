@@ -17,7 +17,7 @@
 					<md-list-item class="md-2-line">
 						<md-icon md-svg-icon="action:ic_assignment_ind_24px" class="name"></md-icon>
 						<div class="md-list-item-text">
-							<h3>Régis RAMEL</h3>
+							<h3>{{menageInfos.referant.nom | uppercase}} {{menageInfos.referant.prenom}}</h3>
 							<p>Service 1</p> 
 						</div>
 					</md-list-item>
@@ -56,7 +56,7 @@
 					<md-list-item class="md-2-line">
 						<md-icon md-svg-icon="editor:ic_insert_invitation_24px" class="name"></md-icon>
 						<div class="md-list-item-text">
-							<h3>12/10/2004</h3>
+							<h3>{{menageInfos.dateEntree | date: "dd/MM/yyyy"}}</h3>
 							<p>Toujours présent</p> 
 						</div>
 					</md-list-item>
@@ -95,10 +95,10 @@
 
       				<md-input-container>
       					<label>Actes</label>
-      					<md-select ng-model="ctrl.acte">
+      					<md-select ng-model="acteSelected">
       						<md-option>Aucun</md-option>
-      						<md-option ng-repeat="acte in [1,2,3,4,5,6]" ng-value="acte">
-      							Acte n°{{acte}}
+      						<md-option ng-repeat="acte in actesTypes" ng-value="acte">
+      							{{acte.libelle}}
       						</md-option>
       					</md-select>
       				</md-input-container>
@@ -107,8 +107,8 @@
       					<label>Prestations</label>
       					<md-select ng-model="ctrl.prestation">
       						<md-option>Aucune</md-option>
-      						<md-option ng-repeat="prestation in [1,2,3,4,5,6]" ng-value="prestation">
-      							Prestation n°{{prestation}}
+      						<md-option ng-repeat="prestation in prestationsTypes" ng-value="prestation">
+      							{{prestation.libelle}}
       						</md-option>
       					</md-select>
       				</md-input-container>
@@ -117,8 +117,8 @@
       					<label>Besoins</label>
       					<md-select ng-model="ctrl.besoin">
       						<md-option>Aucun</md-option>
-      						<md-option ng-repeat="besoin in [1,2,3,4,5,6]" ng-value="besoin">
-      							Besoin n°{{besoin}}
+      						<md-option ng-repeat="besoin in besoinsTypes" ng-value="besoin">
+      							{{besoin.libelle}}
       						</md-option>
       					</md-select>
       				</md-input-container>
