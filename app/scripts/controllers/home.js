@@ -8,12 +8,7 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('HomeCtrl', ['$scope', 'ExempleFactory', function ($scope, ExempleFactory) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('HomeCtrl', ['$scope', 'ExempleFactory', 'BesoinsFactory', function ($scope, ExempleFactory, BesoinsFactory) {
     
     /**
      * Initialize Project list
@@ -30,8 +25,26 @@ angular.module('laReleveApp')
       });
     };
 
+    /**
+     * Initialize Project list
+     */
+    $scope.besoinsList = function() {
+       BesoinsFactory.getBesoins(function (besoins){
+        besoins.$promise.then(function(besoins) {
+          $scope.besoins = besoins;
+
+          console.log($scope.besoins);
+          console.log($scope.$parent)
+          //Hide the loading bar when the data are available
+          //$scope.hideLoadingBar();
+        });
+      });
+    };
+
 
     $scope.utilisateursList();
+
+    $scope.besoinsList();
 
 
 

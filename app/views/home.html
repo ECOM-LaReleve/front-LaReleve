@@ -45,8 +45,8 @@
                   <label>Besoins</label>
                   <md-select ng-model="ctrl.besoin">
                     <md-option>Aucun</md-option>
-                    <md-option ng-repeat="besoin in [1,2,3,4,5,6]" ng-value="besoin">
-                      Besoin n°{{besoin}}
+                    <md-option ng-repeat="besoin in besoins" ng-value="besoin">
+                      {{besoin.libelle}}
                     </md-option>
                   </md-select>
                 </md-input-container>

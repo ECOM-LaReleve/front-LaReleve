@@ -19,6 +19,6 @@ angular.module('laReleveApp')
      * @returns {string} the environment url
      */
     this.getEnvironment = function() {
-        return envProd;
+        return env;
     };
 });
