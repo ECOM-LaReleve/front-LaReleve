@@ -41,4 +41,40 @@ angular.module('laReleveApp')
         headers: {'Content-Type': 'application/json'}
       }
     });
-  }]);
+  }])
+
+  .factory('ActesFactory', ['$resource', '$rootScope', 'WebServices', function ($resource, $rootScope, WebServices) {
+    var userWebservices = WebServices.webServicesGroup;
+    return $resource(
+      userWebservices.actes.get, //urls
+      {},                                 //params
+      { getActes : {                    //actions
+        method: 'GET',
+        interceptor: {
+          responseError: function (data) {
+            $rootScope.$broadcast('requestResponseError', data);  //broadcast an event if an error occurred
+          }
+        },
+        headers: {'Content-Type': 'application/json'},
+        isArray: true
+      }
+    });
+  }])
+
+  .factory('ActesByIdFactory', ['$resource', '$rootScope', 'WebServices', function ($resource, $rootScope, WebServices) {
+    var userWebservices = WebServices.webServicesGroup;
+    return $resource(
+      userWebservices.actes.getById, //urls
+      {id:'@id'},                             //params
+      { getActesById : {                    //actions
+        method: 'GET',
+        interceptor: {
+          responseError: function (data) {
+            $rootScope.$broadcast('requestResponseError', data);  //broadcast an event if an error occurred
+          }
+        },
+        headers: {'Content-Type': 'application/json'}
+      }
+    });
+  }])
+  ;

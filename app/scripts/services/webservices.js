@@ -22,48 +22,34 @@
        get:'/besoins',
        getById:'/besoins/:id'
      },
-     dashboard:{
-      get:'/dashboard'
-    },
-    project: {
-      get:'/projects',
-      add:'/projects',
-      update:'/projects/:id',
-      getById:'/projects/:id',
-      getClients:'/clients',
-      isOk:'/projects/ok/:id'
-    },
-    levelTechnos: {
-      add:'/levelTechnos'
-    },
-    technos: {
-      get:'/technos'
-    },
-    login: {
-      login:'/login',
-      logout:'/logout'
-    },
-    assignments: {
-      staffing:'/assignments/details',
-      assigns:'/assignments',
-      update:'/assignments/:id',
-      delete:'/assignments/:id',
-      projectDefault: '/assignments/projects/:id',
-      projectFromWeek: '/assignments/projects/:id/:week,:year',
-      firstLastProject: '/assignments/projects/:id/assignments?positions=first,last',
-      lastProject: '/assignments/projects/:id/assignments?positions=last',
-      collabDefault: '/assignments/collabs/:id',
-      collabFromWeek: '/assignments/collabs/:id/:week,:year'
-    },
-    utilisateurs: {
-      add:'/users/add',
-      delete:'/users/:id',
-      list:'/users',
-      get:'/utilisateurs'
-    }, 
-    authentication: {
-      login:'/auth/login'
-    }
+      actes: {
+       get:'/actes',
+       getById:'/actes/:id'
+     },
+      prestations: {
+       get:'/prestations',
+       getById:'/prestations/:id',
+       getByService:'/prestations?idservice=:id'
+     },
+      utilisateurs:{
+        get:'/utilisateurs',
+        getById:'/utilisateurs/:id',
+        getByService:'/utilisateurs?idservice=:id'
+     },
+      individus: {
+        get:'/individus',
+        getById:'/individus/:id',
+        getByMenageId:'/individus?menage=:id',
+        getByMenageName:'/individus?menage=:name'
+     },
+      menages: {
+        get:'/menages',
+        getById:'/menages/:id',
+        getByReferantId:'/menages?idreferant=:id'
+     },
+      authentication: {
+       login:'/auth/login'
+     }
   };
 
     //With the environments, we built the right url (ex: "http://localhost:8080/" + "besoins.get" = http://localhost:8080/besoins)

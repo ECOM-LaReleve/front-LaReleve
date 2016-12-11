@@ -8,10 +8,10 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('HomeCtrl', ['$scope', 'ExempleFactory', 'BesoinsFactory', function ($scope, ExempleFactory, BesoinsFactory) {
+  .controller('HomeCtrl', ['$scope', 'ExempleFactory', 'BesoinsFactory', 'ActesFactory', function ($scope, ExempleFactory, BesoinsFactory, ActesFactory) {
     
     /**
-     * Initialize Project list
+     * Initialize Utilisateurs list
      */
     $scope.utilisateursList = function() {
        ExempleFactory.getUtilisateurs(function (utilisateurs){
@@ -26,7 +26,7 @@ angular.module('laReleveApp')
     };
 
     /**
-     * Initialize Project list
+     * Initialize Besoins list
      */
     $scope.besoinsList = function() {
        BesoinsFactory.getBesoins(function (besoins){
@@ -34,7 +34,21 @@ angular.module('laReleveApp')
           $scope.besoins = besoins;
 
           console.log($scope.besoins);
-          console.log($scope.$parent)
+          //Hide the loading bar when the data are available
+          //$scope.hideLoadingBar();
+        });
+      });
+    };
+
+    /**
+     * Initialize Actes list
+     */
+    $scope.actesList = function() {
+       ActesFactory.getActes(function (actes){
+        actes.$promise.then(function(actes) {
+          $scope.actes = actes;
+
+          console.log($scope.actes);
           //Hide the loading bar when the data are available
           //$scope.hideLoadingBar();
         });
@@ -46,6 +60,7 @@ angular.module('laReleveApp')
 
     $scope.besoinsList();
 
+    $scope.actesList();
 
 
   }]);

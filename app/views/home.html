@@ -25,8 +25,8 @@
                   <label>Actes</label>
                   <md-select ng-model="ctrl.acte">
                     <md-option>Aucun</md-option>
-                    <md-option ng-repeat="acte in [1,2,3,4,5,6]" ng-value="acte">
-                      Acte n°{{acte}}
+                    <md-option ng-repeat="acte in actes" ng-value="acte">
+                      {{acte.libelle}}
                     </md-option>
                   </md-select>
                 </md-input-container>
