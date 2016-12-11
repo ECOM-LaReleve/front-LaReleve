@@ -53,21 +53,21 @@
         get:'/prestationsrealisees',
         create:'/prestationsrealisees',
         getById:'/prestationsrealisees/:id',
-        getByMenageId:'/prestationsrealisees?menage=:id',
-        getByIndividuId:'/prestationsrealisees?individu=:id',
-        getByUtilisateurId:'/prestationsrealisees?utilisateur=:id',
-        getByPrestationId:'/prestationsrealisees?prestation=:id'
+        getByMenageId:'/prestationsrealisees?idmenage=:id',
+        getByIndividuId:'/prestationsrealisees?idindividu=:id',
+        getByUtilisateurId:'/prestationsrealisees?idutilisateur=:id',
+        getByPrestationId:'/prestationsrealisees?idprestation=:id'
      },
       actesrealises: {
         get:'/actesrealises',
         create:'/actesrealises',
         getById:'/actesrealises/:id',
-        getByMenageId:'/actesrealises?menage=:id',
-        getByIndividuId:'/actesrealises?individu=:id',
-        getByUtilisateurId:'/actesrealises?utilisateur=:id',
-        getByActeId:'/actesrealises?acte=:id',
-        getByBesoinId:'/actesrealises?besoin=:id',
-        getByPrestationId:'/actesrealises?prestation=:id'
+        getByMenageId:'/actesrealises?idmenage=:id',
+        getByIndividuId:'/actesrealises?idindividu=:id',
+        getByUtilisateurId:'/actesrealises?idutilisateur=:id',
+        getByActeId:'/actesrealises?idacte=:id',
+        getByBesoinId:'/actesrealises?idbesoin=:id',
+        getByPrestationId:'/actesrealises?idprestation=:id'
      },
       authentication: {
        login:'/auth/login'

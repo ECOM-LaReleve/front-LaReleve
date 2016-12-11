@@ -158,7 +158,7 @@ angular
       .iconSet('notification', 'material-design-icons/sprites/svg-sprite/svg-sprite-notification.svg', 24)
       .iconSet('social', 'material-design-icons/sprites/svg-sprite/svg-sprite-social.svg', 24)
       .iconSet('toggle', 'material-design-icons/sprites/svg-sprite/svg-sprite-toggle.svg', 24)
-      .defaultIconSet('material-design-icons/sprites/svg-sprite/svg-sprite-action.svg', 24)
+      .defaultIconSet('material-design-icons/sprites/svg-sprite/svg-sprite-action.svg', 24);
 
       // Illustrated user icons used in the docs https://material.angularjs.org/latest/#/demo/material.components.gridList
       //.defaultIconSet('../bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-action.svg', 24);
