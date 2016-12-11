@@ -8,12 +8,14 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('MenageCtrl', ['$scope', '$q', '$timeout', '$mdDialog', function ($scope, $q, $timeout, $mdDialog) {
+  .controller('MenageCtrl', ['$scope', '$q', '$timeout', '$mdDialog', '$routeParams', function ($scope, $q, $timeout, $mdDialog, $routeParams) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+    console.log($routeParams.id);
 
 
     /**

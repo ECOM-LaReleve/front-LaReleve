@@ -47,7 +47,7 @@ angular
         controller: 'RolesCtrl',
         controllerAs: 'roles'
       })
-      .when('/menage', {
+      .when('/menage/:id', {
         templateUrl: 'views/menage.html',
         controller: 'MenageCtrl',
         controllerAs: 'menage'
@@ -62,7 +62,7 @@ angular
         controller: 'MenagecreationCtrl',
         controllerAs: 'menageCreation'
       })
-      .when('/menageInfos', {
+      .when('/menageInfos/:id', {
         templateUrl: 'views/menageinfos.html',
         controller: 'MenageinfosCtrl',
         controllerAs: 'menageInfos'
