@@ -41,7 +41,7 @@
         create:'/individus',
         getById:'/individus/:id',
         getByMenageId:'/individus?idmenage=:id',
-        getByMenageName:'/individus?idmenage=:name'
+        getMenageByName:'/individus?menage=:name'
      },
       menages: {
         get:'/menages',

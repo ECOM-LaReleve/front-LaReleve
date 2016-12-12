@@ -15,7 +15,7 @@
 						<md-icon md-svg-icon="action:ic_assignment_ind_24px" class="name"></md-icon>
 						<div class="md-list-item-text">
 							<h3>{{$parent.menageInfos.referant.nom | uppercase}} {{$parent.menageInfos.referant.prenom}}</h3>
-							<p>Service 1</p> 
+							<p>{{$parent.menageInfos.referant.service.libelle}}</p> 
 						</div>
 					</md-list-item>
 					<md-divider ng-if="!$last"></md-divider>

@@ -15,7 +15,7 @@ angular.module('laReleveApp')
       'Karma'
     ];
 
-    var id = $routeParams.id;
+    $scope.idMenage = $routeParams.id;
 
      /**
      * Initialize prestations realisees list by id menage
@@ -45,37 +45,10 @@ angular.module('laReleveApp')
       });
     };
 
-     /**
-     * Initialize prestations realisees list by id menage
-     */
-    $scope.infoMenageById = function(id) {
-       MenagesByIdFactory.getMenagesById({id:id},function (menageInfos){
-        menageInfos.$promise.then(function(menageInfos) {
-          $scope.menageInfos = menageInfos;
-
-          //Hide the loading bar when the data are available
-          //$scope.hideLoadingBar();
-        });
-      });
-    };
-
-     /**
-     * Initialize prestations realisees list by id menage
-     */
-    $scope.getIndividusFromMenageById = function(id) {
-       IndividusByMenageIdFactory.getIndividusByMenageId({id:id},function (individus){
-        individus.$promise.then(function(individus) {
-          $scope.individus = individus;
-          //Hide the loading bar when the data are available
-          //$scope.hideLoadingBar();
-        });
-      });
-    };
-
-    $scope.prestationRealiseesListByIdMenage(id);
-    $scope.actesRealisesListByIdMenage(id);
-    $scope.infoMenageById(id);
-    $scope.getIndividusFromMenageById(id);
+    $scope.prestationRealiseesListByIdMenage($scope.idMenage);
+    $scope.actesRealisesListByIdMenage($scope.idMenage);
+    $scope.infoMenageById($scope.idMenage);
+    $scope.getIndividusFromMenageById($scope.idMenage);
 
 
     /**

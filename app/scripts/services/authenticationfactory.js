@@ -21,6 +21,7 @@
         if (response.data.token) {
         // store username and token in local storage to keep user logged in between page refreshes
         $localStorage.currentUser = { username: username, token: response.data.token };
+        console.log($localStorage.currentUser);
 
         // add jwt token to auth header for all requests made by the $http service
         //$http.defaults.headers.post["Content-Type"] = "text/plain";

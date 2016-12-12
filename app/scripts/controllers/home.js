@@ -26,6 +26,8 @@ angular.module('laReleveApp')
       });
     };
 
+    $scope.menagesList();
+
     $scope.besoinsList();
 
     $scope.actesList();
@@ -33,4 +35,6 @@ angular.module('laReleveApp')
     $scope.prestationsList();
 
     $scope.utilisateursList();
+
+    $scope.menagesByName("dupond");
   }]);

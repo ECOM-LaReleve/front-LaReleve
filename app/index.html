@@ -32,11 +32,31 @@
           La Relève
         </h3>
         <span flex="15"></span>
-        <md-input-container flex="50" id='menageSearchInputContainer' md-theme="input">
+        <!-- <md-input-container flex="50" id='menageSearchInputContainer' md-theme="input">
           <label>&nbsp;</label>
           <md-icon md-svg-icon="action:ic_search_24px" aria-label="Search"></md-icon>
           <input id="menageSearchInput" ng-model="menageSearch" placeholder="Rechercher un ménage">
-        </md-input-container>
+        </md-input-container> -->
+
+         <md-autocomplete flex="50"
+            md-input-name="menageField"
+            md-selected-item="selectedItem"
+            md-search-text="searchText"
+            md-require-match
+            md-items="item in searchMenage(searchText)"
+            md-item-text="item.id"
+            md-floating-label="&nbsp;"
+            placeholder="Rechercher un ménage">
+          <md-item-template>
+            <span ng-click="go('/menage/'+item.id)" md-highlight-text="searchText">{{item.id}}</span>
+          </md-item-template>
+          <md-not-found>
+            <a ng-click="go('/menage/1')">Aucun résulat pour "{{searchText}}". Créez un nouvel individu en cliquant ici !</a>
+          </md-not-found>
+        </md-autocomplete>
+
+
+
         <span flex></span>        
 
         <!-- Menu and avatar icons -->

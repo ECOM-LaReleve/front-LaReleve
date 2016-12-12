@@ -55,7 +55,27 @@ angular.module('laReleveApp')
             $rootScope.$broadcast('requestResponseError', data);  //broadcast an event if an error occurred
           }
         },
-        headers: {'Content-Type': 'application/json'}
+        headers: {'Content-Type': 'application/json'},
+        isArray: true
       }
     });
-  }]);
+  }])
+
+  .factory('MenageByNameFactory', ['$resource', '$rootScope', 'WebServices', function ($resource, $rootScope, WebServices) {
+    var userWebservices = WebServices.webServicesGroup;
+    return $resource(
+      userWebservices.individus.getMenageByName, //urls
+      {name:'@name'},                             //params
+      { getMenageByName : {                    //actions
+        method: 'GET',
+        interceptor: {
+          responseError: function (data) {
+            $rootScope.$broadcast('requestResponseError', data);  //broadcast an event if an error occurred
+          }
+        },
+        headers: {'Content-Type': 'application/json'},
+        isArray: true
+      }
+    });
+  }])
+  ;

@@ -8,12 +8,7 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('PrimaryCtrl', ['$scope', '$rootScope','$mdSidenav', '$location', 'BesoinsFactory', 'ActesFactory', 'PrestationsFactory',  'MenagesByIdFactory', 'IndividusByMenageIdFactory', 'AuthenticationFactory', function ($scope, $rootScope, $mdSidenav, $location, BesoinsFactory, ActesFactory, PrestationsFactory, MenagesByIdFactory, IndividusByMenageIdFactory, AuthenticationFactory) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('PrimaryCtrl', ['$scope', '$rootScope','$mdSidenav', '$location', 'BesoinsFactory', 'ActesFactory', 'PrestationsFactory',  'MenagesByIdFactory', 'IndividusByMenageIdFactory', 'MenagesFactory', 'MenageByNameFactory', 'AuthenticationFactory', function ($scope, $rootScope, $mdSidenav, $location, BesoinsFactory, ActesFactory, PrestationsFactory, MenagesByIdFactory, IndividusByMenageIdFactory, MenagesFactory, MenageByNameFactory, AuthenticationFactory) {
 
     /**
      * Initialize Besoins list
@@ -60,6 +55,38 @@ angular.module('laReleveApp')
       });
     };
 
+    /**
+     * Initialize Menage list
+     */
+    $scope.menagesList = function() {
+       MenagesFactory.getMenages(function (menages){
+        menages.$promise.then(function(menages) {
+          $rootScope.allMenages = menages;
+
+          console.log($rootScope.allMenages);
+          //Hide the loading bar when the data are available
+          //$scope.hideLoadingBar();
+        });
+      });
+    };
+
+
+    /**
+     * Initialize Menage list
+     */
+    $rootScope.menagesByName = function(name) {
+       MenageByNameFactory.getMenageByName({name: name}, function (menages){
+        menages.$promise.then(function(menages) {
+          $rootScope.menagesGotByName = menages;
+
+          console.log($rootScope.menagesGotByName);
+          return menages;
+          //Hide the loading bar when the data are available
+          //$scope.hideLoadingBar();
+        });
+      });
+    };
+
      /**
      * Initialize prestations realisees list by id menage
      */
@@ -88,6 +115,15 @@ angular.module('laReleveApp')
       });
     };
 
+    $scope.searchMenage = function (name) {
+       var data = {name: name};
+       return MenageByNameFactory.getMenageByName(data).$promise;
+       // return MenageByNameFactory.getMenageByName(data).then(function(response) {
+       //  console.log(response.data);
+       //  return response.data;
+       // });
+    };
+
 
 
     $scope.locationExposer = function() {
@@ -108,6 +144,15 @@ angular.module('laReleveApp')
     $scope.toggleSidenav = function(menuId) {
 	    $mdSidenav(menuId).toggle();
 	  };
+
+    $scope.loggingFunction = function(elem){
+      console.log(elem);
+    }; 
+
+    $scope.loggingFunction2 = function(){
+      console.log($scope.selectedItem);
+      console.log(selectedItem);
+    }; 
 
 		/**
 		 * Use this function to change view with ng-click
