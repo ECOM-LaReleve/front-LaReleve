@@ -1,0 +1,199 @@
+<div flex layout="row">
+	<md-sidenav id="infoMenageSidenav" layout="column" class="md-sidenav-left md-sidenav-list" md-component-id="nav" md-is-locked-open="$mdMedia('gt-xs')" md-is-open="firstLaunch">
+		<md-content class="animate-show" id="infoMenageContainer" ng-show="!loadingBar">
+			<md-card flex>
+				<md-card-header md-colors="::{backgroundColor: 'greyTheme-primary-400'}">
+					<md-card-header-text>
+						<span class="md-title">Ménage {{menageInfos.nomChefMenage | uppercase}}</span>
+						<span class="md-subhead">Informations générales</span>
+						<md-button style="position: absolute; left: 260px;" class="md-icon-button" aria-label="Search" ng-click="go('/menageInfos/'+idMenage)">
+		          <md-icon md-svg-icon="action:ic_launch_24px" aria-label="Search"></md-icon>
+		        </md-button>
+					</md-card-header-text>
+				</md-card-header>
+				<md-list>
+					<md-divider ></md-divider>
+					<md-subheader class="md-no-sticky">Référent</md-subheader>
+					<md-list-item class="md-2-line">
+						<md-icon md-svg-icon="action:ic_assignment_ind_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>{{menageInfos.referant.nom | uppercase}} {{menageInfos.referant.prenom || "Aucun référant affecté"}}</h3>
+							<p>{{menageInfos.referant.service.libelle || "Aucun service"}}</p> 
+						</div>
+					</md-list-item>
+					<md-divider ng-if="!$last"></md-divider>
+					<md-subheader class="md-no-sticky">Logement</md-subheader>
+					<md-list-item class="md-2-line md-long-text">
+						<md-icon md-svg-icon="action:ic_home_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+              <h3>Adresse</h3>
+							<p ng-if="!menageInfos.logement.adresse">{{menageInfos.adresseActuelle || "Aucune adresse renseignée"}}</p>
+              <p ng-if="!menageInfos.adresseActuelle">{{menageInfos.logement.adresse || "Aucune adresse renseignée"}}</p>
+						</div>
+					</md-list-item>
+					<md-list-item class="md-2-line md-long-text">
+						<md-icon md-svg-icon="action:ic_info_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>Détails</h3>
+							<p>
+								Digicode: {{menageInfos.logement.digicode || "Aucun"}}
+							</p>
+							<p>
+								Direction: {{menageInfos.logement.direction || "Aucune"}}
+							</p>
+							<p>
+								Etage n°{{menageInfos.logement.etage || " non renseigné"}}
+							</p>
+						</div>
+					</md-list-item>
+					<md-divider ng-if="!$last"></md-divider>
+					<md-subheader class="md-no-sticky">Date d'arrivée - Date de fin</md-subheader>
+					<!-- <md-datepicker ng-model="myDate" md-placeholder="12/10/2004" disabled></md-datepicker> -->
+					<md-list-item class="md-2-line">
+						<md-icon md-svg-icon="editor:ic_insert_invitation_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>{{(menageInfos.dateEntree | date: "dd/MM/yyyy") || "Aucune date renseignée"}}</h3>
+							<p>Date d'entrée</p> 
+						</div>
+					</md-list-item>
+					<md-divider ng-if="!$last"></md-divider>
+					<md-subheader class="md-no-sticky">Revenus</md-subheader>
+					<md-list-item class="md-2-line">
+						<md-icon md-svg-icon="action:ic_euro_symbol_24px" class="name"></md-icon>
+						<div class="md-list-item-text">
+							<h3>160 €</h3>
+							<p>RSA, Chômage</p>
+						</div>
+					</md-list-item>
+				</md-card>
+		</md-content>
+	</md-sidenav>
+
+	<md-content layout="column" layout-fill>
+      <!-- <md-toolbar id="right-toolbar" class="animate-show md-whiteframe-z1 toolbar" ng-class="{'md-hue-1':showSearch}">
+        <div class="md-toolbar-tools">
+          <md-button class="md-icon-button" ng-click="toggleSidenav('nav')" hide-gt-xs aria-label="Menu">
+            <md-icon md-svg-icon="navigation:ic_arrow_back_24px" aria-label="Menu"></md-icon>
+          </md-button>
+          <span flex></span>
+          <md-button class="md-icon-button" aria-label="Open Settings" ng-click="showListBottomSheet($event)">
+            <md-icon md-svg-icon="navigation:ic_more_vert_24px" aria-label="More"></md-icon>
+          </md-button>
+        </div>
+      </md-toolbar> -->
+      <div class="insetCustom"></div>
+      <div class="inset" hide-xs></div>
+      <div class="animate-show-in" layout-align="center center">
+      	<div flex-gt-xs="95" flex-gt-lg="80" style="margin: auto;">
+
+      		<md-toolbar md-theme="greyTheme" class="animate-show md-whiteframe-z1 toolbar md-hue-1">
+      			<div class="md-toolbar-tools">
+
+      				<md-input-container>
+      					<label>Actes</label>
+      					<md-select ng-model="acteSelected">
+      						<md-option>Aucun</md-option>
+      						<md-option ng-repeat="acte in actesTypes" ng-value="acte">
+      							{{acte.libelle}}
+      						</md-option>
+      					</md-select>
+      				</md-input-container>
+      				<span flex></span>
+      				<md-input-container>
+      					<label>Prestations</label>
+      					<md-select ng-model="ctrl.prestation">
+      						<md-option>Aucune</md-option>
+      						<md-option ng-repeat="prestation in prestationsTypes" ng-value="prestation">
+      							{{prestation.libelle}}
+      						</md-option>
+      					</md-select>
+      				</md-input-container>
+      				<span flex></span>
+      				<md-input-container>
+      					<label>Besoins</label>
+      					<md-select ng-model="ctrl.besoin">
+      						<md-option>Aucun</md-option>
+      						<md-option ng-repeat="besoin in besoinsTypes" ng-value="besoin">
+      							{{besoin.libelle}}
+      						</md-option>
+      					</md-select>
+      				</md-input-container>
+      				<span flex></span>
+      				<md-datepicker ng-model="myDate" md-placeholder="Date entre le"></md-datepicker>
+      				
+      			</div>
+      		</md-toolbar>
+
+      		<md-subheader class="md-no-sticky">Urgent</md-subheader>
+      		<md-card>
+      			<md-list>
+      				<md-list-item class="md-2-line" ng-repeat="acte in actes track by $index">
+      					<div class="md-list-item-text compact">
+      						<h3>Acte n°{{$index+1}}: {{acte.acte.libelle}}</h3>
+      						<p>Statut: {{acte.statut}}</p>
+      					</div>
+      					<md-icon class="taskNotOk" md-svg-icon="alert:ic_error_24px" aria-label="task not ok icon"></md-icon>
+      					<md-divider></md-divider>
+      				</md-list-item>
+              <md-list-item class="md-2-line" ng-repeat="prestation in prestations track by $index">
+                <div class="md-list-item-text compact">
+                  <h3>Prestation n°{{$index+1}}: {{prestation.prestation.libelle}}</h3>
+                  <p>Statut: {{prestation.statut}}</p>
+                </div>
+                <md-icon class="taskNotOk" md-svg-icon="alert:ic_error_24px" aria-label="task not ok icon"></md-icon>
+                <md-divider ng-if="!$last"></md-divider>
+              </md-list-item>
+              <md-list-item class="md-2-line" ng-if="!prestations.length && !actes.length">
+                <div class="md-list-item-text compact">
+                  <h3>Aucun élément urgent</h3>
+                </div>
+                <md-icon class="taskOk" md-svg-icon="action:ic_check_circle_24px" aria-label="task ok icon"></md-icon>
+                <md-divider ng-if="!$last"></md-divider>
+              </md-list-item>
+      			</md-list>
+      		</md-card>
+
+      		<md-subheader class="md-no-sticky">Autres éléments</md-subheader>
+      		<md-card>
+      			<md-list>
+      				<md-list-item class="md-2-line" ng-repeat="elem in [1,2,3,4,5,6,7,8,9] track by $index">
+      					<div class="md-list-item-text compact">
+      						<h3 ng-if="$index % 2 == 0">Acte n°{{elem}}</h3>
+                  <h3 ng-if="$index % 2 != 0">Prestation n°{{elem}}</h3>
+      						<p>Date d'échéance: 0{{elem}}/01/2017</p>
+      					</div>
+      					<md-divider ng-if="!$last"></md-divider>
+      				</md-list-item>
+      			</md-list>
+      		</md-card>
+
+      		<md-fab-speed-dial id="addBesoin" md-direction="up" class="md-scale">
+      			<md-fab-trigger>
+      				<md-button aria-label="menu" class="md-fab md-primary">
+      					<md-icon md-svg-icon="content:ic_add_24px" aria-label="add besoin"></md-icon>
+      				</md-button>
+      			</md-fab-trigger>
+
+      			<md-fab-actions>
+      				<md-button aria-label="Acte" class="md-fab md-raised md-mini" ng-click="showAddActe()">
+      					<md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
+      						Acte
+      					</md-tooltip>
+      					A
+      				</md-button>
+      				<md-button aria-label="Prestation" class="md-fab md-raised md-mini">
+      					<md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
+      						Prestation
+      					</md-tooltip>
+      					P
+      				</md-button>
+      			</md-fab-actions>
+      		</md-fab-speed-dial>
+
+      		<div class="inset" hide-xs></div>
+
+
+      	</div>
+      </div>
+    </md-content>
+  </div>

@@ -1,0 +1,154 @@
+<md-content layout-fill>
+	<md-card>
+		<md-card-header md-colors="{background: 'greyTheme-primary-700'}">
+	    <md-card-avatar>
+	      <md-icon md-svg-src="social:ic_group_add_24px" aria-label="Ajouter un ménage"></md-icon>
+	    </md-card-avatar>
+	    <md-card-header-text>
+	      <h2>Création d'un ménage</h2>
+	    </md-card-header-text>
+	  </md-card-header>
+		<form name="menageCreationForm" id="menageCreationForm">
+
+		<!-- Affiliation -->
+			<md-toolbar md-theme="greyTheme" class="md-hue-1">
+	      <div class="md-toolbar-tools">
+	        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+	          <md-icon md-svg-icon="action:ic_assignment_ind_24px"></md-icon>
+	        </md-button>
+	        <h2>
+	          <span>Affiliation</span>
+	        </h2>
+	        <span flex></span>
+	      </div>
+	    </md-toolbar>
+		  <div layout="row" layout-margin>
+		    <!-- <md-input-container class="md-block" flex>
+		      <label>Service</label>
+		      <md-select ng-model="menage.referant.service.id">
+		        <md-option ng-repeat="service in services" value="{{service.id}}">
+		          {{service.libelle}}
+		        </md-option>
+		      </md-select>
+		    </md-input-container> -->
+
+		    <md-input-container class="md-block" flex>
+		      <label>Référent</label>
+		      <md-select ng-model="menage.referant">
+		        <md-option ng-repeat="referent in users" value="{{referent}}">
+		          {{referent.prenom}} {{referent.nom | uppercase}}
+		        </md-option>
+		      </md-select>
+		    </md-input-container>
+		  </div>
+
+		 
+		  <!-- Adresse -->
+		 	<md-toolbar md-theme="greyTheme" class="md-hue-1">
+	      <div class="md-toolbar-tools">
+	        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+	          <md-icon md-svg-icon="action:ic_home_24px"></md-icon>
+	        </md-button>
+	        <h2>
+	          <span>Adresse</span>
+	        </h2>
+	      </div>
+	    </md-toolbar>
+
+		  <div layout-padding>
+		    
+			  <md-input-container class="md-block">
+			    <label>Adresse</label>
+			    <textarea ng-model="menage.adresseActuelle" md-maxlength="255" rows="3" md-select-on-focus></textarea>
+			  </md-input-container>
+
+		  </div>
+
+
+		  <!-- Composition du ménage -->
+			<md-toolbar md-theme="greyTheme" class="md-hue-1">
+				<div class="md-toolbar-tools">
+				  <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+				    <md-icon md-svg-icon="social:ic_people_24px"></md-icon>
+				  </md-button>
+				  <h2>
+				    <span>Composition du ménage</span>
+				  </h2>
+				  <span flex></span>
+				</div>
+			</md-toolbar>
+
+			<md-input-container class="md-block">
+			  <label>Nom du chef de famille</label>
+			  <input required ng-model="menage.nomChefMenage" md-maxlength="20" md-select-on-focus></input>
+			</md-input-container>
+			<!-- <div layout="column" layout-margin>
+		    <md-autocomplete flex required
+            md-input-name="chefDeFamilleField"
+            md-selected-item="selectedItem"
+            md-search-text="searchText"
+            md-require-match
+            md-items="item in querySearch(searchText)"
+            md-item-text="item.display"
+            md-floating-label="Chef de famille">
+          <md-item-template>
+            <span md-highlight-text="searchText">{{item.display}}</span>
+          </md-item-template>
+          <md-not-found>
+	          <a ng-click="showCreateIndividu($event, true)">Aucun résulat pour "{{searchText}}". Créez un nouvel individu en cliquant ici !</a>
+	        </md-not-found>
+          <div ng-messages="menageCreationForm.chefDeFamilleField.$error" ng-if="menageCreationForm.chefDeFamilleField.$touched">
+            <div ng-message="required">Ce champ est <b>obligatoire !</b></div>
+            <div ng-message="md-require-match">Vous devez saisir une personne <b>existante !</b></div>
+          </div>
+ 				</md-autocomplete> -->
+
+
+ 				<md-subheader>Individus</md-subheader>
+ 				<div layout="row" layout-wrap layout-align="space-around center">
+
+ 					<!-- <md-input-container ng-repeat="individu in [1,2,3,4,5,6,7]" flex="40">
+		        <label>Individu n°{{$index+1}}</label>
+		        <input disabled ng-model="individu" name="collabMatricule">
+		      </md-input-container> -->
+
+		      <md-card ng-repeat="individu in individusInfos" flex="40">
+		        <md-card-title>
+		          <md-card-title-text>
+		            <span class="md-headline">{{individu.prenom}} {{individu.nomUsage}}</span>
+		            <span class="md-subhead">Individu n°{{$index+1}}</span>
+		          </md-card-title-text>
+		          <md-card-title-media>
+		            <div class="md-media-sm card-media"></div>
+		          </md-card-title-media>
+		        </md-card-title>
+		      </md-card>
+
+		      <md-card ng-if="!individusInfos.length" flex="80">
+		        <md-card-title>
+		          <md-card-title-text>
+		            <span class="md-headline">Aucun individu</span>
+		            <span class="md-subhead">Vous pouvez en rajouter un en cliquant sur le bouton ci-dessous</span>
+		          </md-card-title-text>
+		          <md-card-title-media>
+		            <div class="md-media-sm card-media"></div>
+		          </md-card-title-media>
+		        </md-card-title>
+		      </md-card>
+ 				
+ 				</div>
+ 				<md-button ng-click="showCreateIndividu($event, false)" class="md-primary md-raised"> Ajouter un individu </md-button>
+		  </div>
+
+
+
+		</form>
+
+		<md-card-actions layout="row" layout-align="end center">
+			<md-button ng-disabled="menageCreationForm.$invalid" ng-click="addMenage(menage)" class="md-primary"> Enregistrer </md-button>
+		</md-card-actions>
+	</md-card>
+
+
+	
+</md-content>

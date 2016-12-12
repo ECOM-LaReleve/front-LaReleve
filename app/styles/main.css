@@ -76,7 +76,115 @@ md-toolbar #sidenav-background {
 }
 
 
+#menageSearchInputContainer .md-errors-spacer {
+  display: none;
+}
 
+#infoMenageSidenav.md-locked-open {
+   width: 350px;
+   min-width: 350px;
+   max-width: 350px;
+}
+
+/*Needed to be always over the other components of the pages but not over select items*/
+#mainToolbar {
+  z-index: 69;
+}
+
+
+.taskNotOk {
+  fill: #F44336;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+.taskOk {
+  fill: #2E7D32;
+}
+
+md-card md-list {
+  padding: 0px;
+}
+
+
+.logoLogin {
+  max-width: 400px;
+}
+
+#addMenage, #addBesoin {
+  top: auto;
+  right: 20px;
+  bottom: 20px;
+  left: auto;
+  position: fixed;
+}
+
+#menageCreationForm md-icon {
+  color: initial;
+  fill: initial;
+}
+
+md-card-header-text > h2 {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/*// Round avatar*/
+.md-avatar > svg {
+  border-radius: 50%;
+}
+
+/*md-sidenav .md-avatar {
+  height: 64px;
+  width: 64px;
+}*/
+
+#loadingLogin {
+  margin: auto;
+}
+
+
+.png-icon{
+  margin: -15px -15px;
+  padding: 0;
+  display: inline-block;
+  background-repeat: no-repeat no-repeat;
+  pointer-events: none;
+}
+
+/*Icon on search input of the main toolbar*/
+md-toolbar md-autocomplete-wrap:before {
+  font-family: "Material Icons";
+  content: "\E8B6";
+  line-height: 1;
+  padding: 8px 0px 0px 8px;
+  font-weight: normal;
+  font-size: 24px;
+}
+
+
+/*Serch input on the main toolbar*/
+md-toolbar md-autocomplete input::-webkit-input-placeholder {
+    color:rgb(128,137,35);
+}
+md-toolbar md-autocomplete input:-moz-placeholder { /* Firefox 18- */
+    color:rgb(128,137,35);
+}
+md-toolbar md-autocomplete input::-moz-placeholder {  /* Firefox 19+ */
+    color:rgb(128,137,35);
+}
+md-toolbar md-autocomplete input:-ms-input-placeholder { 
+    color:rgb(128,137,35);
+}
+
+.logoToolbar {
+  max-width: 48px;
+  margin-right: 12px; 
+}
+
+.pointerMouse {
+  cursor: pointer; cursor: hand;
+}
 
 
 /* Responsive: Portrait tablets and up */

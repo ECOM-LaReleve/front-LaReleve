@@ -14,12 +14,11 @@ angular.module('laReleveApp')
     var env = 'http://35.164.29.163';
 
     var envProd = 'http://35.164.29.163';	// The production environments
-    
 
     /**
      * @returns {string} the environment url
      */
     this.getEnvironment = function() {
-        return env;
+        return @@ENVIRONMENT;
     };
 });

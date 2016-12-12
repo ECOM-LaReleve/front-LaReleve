@@ -14,57 +14,79 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
-  <body ng-app="laReleveApp" layout="row" ng-controller="PrimaryCtrl" ng-cloak class="md-default-theme">
+  <body ng-app="laReleveApp" layout="column" ng-controller="PrimaryCtrl" ng-cloak class="md-default-theme">
     <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <p class="browsehappy">Vous utilisez un navigateur <strong>trop ancien</strong>. Merci de <a href="http://browsehappy.com/">le mettre à jour</a> pour améliorer votre experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <!-- SideNav -->
-    <md-sidenav id="navigation_drawer" layout="column" class="md-sidenav-left md-whiteframe-z2 md-navigation-drawer" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-cloak>
+    <!-- Main toolbar -->
+    <md-toolbar ng-show="locationExposer().path()!='/login'" id="mainToolbar" ng-class="{'slideTopToBottom': firstAppLaunch, 'animate-show': !firstAppLaunch}" class="md-whiteframe-z1">
+      <div class="md-toolbar-tools">
+        <!-- Hamburger icon -->
+        <img ng-click="go('/')" ng-src="images/R_lareleve.jpg" class="md-card-image logoToolbar pointerMouse" alt="logo La Relève">
+        <h3 ng-click="go('/')" class="pointerMouse">
+          La Relève
+        </h3>
+        <span flex="15"></span>
+        <!-- <md-input-container flex="50" id='menageSearchInputContainer' md-theme="input">
+          <label>&nbsp;</label>
+          <md-icon md-svg-icon="action:ic_search_24px" aria-label="Search"></md-icon>
+          <input id="menageSearchInput" ng-model="menageSearch" placeholder="Rechercher un ménage">
+        </md-input-container> -->
 
-      <!-- Sidenav toolbar -->
-      <md-toolbar class="md-hue-2 md-tall">
-        <img id="sidenav-logo" src="images/Logo_LA_RELEVE.jpg" alt="logo La Relève">
+         <md-autocomplete flex="50"
+            md-input-name="menageField"
+            md-selected-item="selectedItem"
+            md-search-text="searchText"
+            md-require-match
+            md-items="item in searchMenage(searchText)"
+            md-item-text="item.nomChefMenage"
+            md-floating-label="&nbsp;"
+            placeholder="Rechercher un ménage"
+            md-theme="greyTheme">
+          <md-item-template>
+            <span style="display: block;" ng-click="go('/menage/'+item.id)" md-highlight-text="searchText">Ménage {{item.nomChefMenage}}</span>
+          </md-item-template>
+          <md-not-found>
+            <a ng-click="go('/menage/1')">Aucun résulat pour "{{searchText}}". Créez un nouvel individu en cliquant ici !</a>
+          </md-not-found>
+        </md-autocomplete>
 
-        <!-- <img id="sidenav-background" src="images/Logo_LA_RELEVE.jpg"> -->
-        <span flex></span>
-        <div class="md-body-2">NOM Prénom</div>
-        <div class="md-body-1">Rôle</div>
-      </md-toolbar>
-      <md-list class="slideLeftToRight">
-        <md-list-item role="link" md-ink-ripple ng-click="showLoadingBar(); go('/'); toggleSidenav('left')">
-          <md-icon md-svg-icon="{{item.icon}}" aria-label="{{item.title}}"></md-icon>
-          <p>Accueil</p>
-        </md-list-item>
-        <md-list-item role="link" md-ink-ripple ng-click="showLoadingBar(); go('/roles'); toggleSidenav('left')">
-          <md-icon md-svg-icon="{{item.icon}}" aria-label="{{item.title}}"></md-icon>
-          <p>Rôles</p>
-        </md-list-item>
-        <md-list-item role="link" md-ink-ripple ng-click="showLoadingBar(); go(item.link); toggleSidenav('left')">
-          <md-icon md-svg-icon="{{item.icon}}" aria-label="{{item.title}}"></md-icon>
-          <p>Menu n°3</p>
-        </md-list-item>
-        <md-list-item role="link" md-ink-ripple ng-click="showLoadingBar(); go(item.link); toggleSidenav('left')">
-          <md-icon md-svg-icon="{{item.icon}}" aria-label="{{item.title}}"></md-icon>
-          <p>Menu n°4</p>
-        </md-list-item>
-        <md-divider></md-divider>
-        <md-subheader class="md-no-sticky">Management</md-subheader>
-        <md-list-item ng-repeat="item in admin" role="link" md-ink-ripple>
-          <md-icon md-svg-icon="{{item.icon}}" aria-label="{{item.title}}"></md-icon>
-          <p class="md-body-2">{{item.title}}</p>
-        </md-list-item>
-        <md-list-item role="link" md-ink-ripple ng-click=" toggleSidenav('left'); logOut()">
-          <md-icon md-svg-icon="action:ic_exit_to_app_24px" aria-label="Déconnexion"></md-icon>
-          <p class="md-body-2">Déconnexion</p>
-        </md-list-item>
-      </md-list>
-    </md-sidenav>
+
+
+        <span flex></span>        
+
+        <!-- Menu and avatar icons -->
+        
+        <md-menu-bar>
+          <md-menu>
+            <md-button class="md-icon-button" aria-label="Open Settings" ng-click="$mdOpenMenu()">
+              <img class="png-icon" src="images/avatar.png" style="width: 50px; border-radius: 50%;">
+            </md-button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button ng-click="logoutPrimary()">
+                  Déconnexion
+                </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item>
+                <md-button disabled="disabled">
+                  Rôles
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </md-menu-bar>
+      </div>
+    </md-toolbar>
+
 
     <!-- Main Layout -->
-    <div layout="row" class="relative" layout-fill role="main">
+    <div flex layout="row" class="relative" layout-fill role="main">
         <md-progress-linear class="loadingBar md-warn" md-mode="indeterminate" ng-show="loadingBar"></md-progress-linear>
 
         <md-content layout="row" layout-fill ng-view></md-content>
@@ -95,6 +117,7 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -106,6 +129,18 @@
         <script src="scripts/services/exemplefactory.js"></script>
         <script src="scripts/services/environments.js"></script>
         <script src="scripts/services/webservices.js"></script>
+        <script src="scripts/controllers/menage.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/menagecreation.js"></script>
+        <script src="scripts/controllers/menageinfos.js"></script>
+        <script src="scripts/services/authenticationfactory.js"></script>
+        <script src="scripts/services/actionsfactory.js"></script>
+        <script src="scripts/services/menagefactories.js"></script>
+        <script src="scripts/services/prestationsrealiseesfactories.js"></script>
+        <script src="scripts/services/actesrealisesfactories.js"></script>
+        <script src="scripts/services/individufactories.js"></script>
+        <script src="scripts/services/userfactories.js"></script>
+        <script src="scripts/services/servicesfactories.js"></script>
         <!-- endbuild -->
 </body>
 </html>

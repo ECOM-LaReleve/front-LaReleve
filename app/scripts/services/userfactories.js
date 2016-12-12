@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc service
- * @name laReleveApp.ExempleFactory
+ * @name laReleveApp.UserFactories
  * @description
- * # ExempleFactory
+ * # UserFactories
  * Factory in the laReleveApp.
  */
 angular.module('laReleveApp')
-  .factory('ExempleFactory', ['$resource', '$rootScope', 'WebServices', function ($resource, $rootScope, WebServices) {
+  .factory('UserFactory', ['$resource', '$rootScope', 'WebServices', function ($resource, $rootScope, WebServices) {
     var userWebservices = WebServices.webServicesGroup;
     return $resource(
       userWebservices.utilisateurs.get, //urls

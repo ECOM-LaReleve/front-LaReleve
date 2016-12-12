@@ -234,6 +234,36 @@ module.exports = function (grunt) {
       }
     },
 
+
+    replace: {
+      dist: {
+        options: {
+          patterns: [
+            {
+              match: 'ENVIRONMENT',
+              replacement: 'envProd'
+            }
+          ]
+        },
+        files: [
+          {expand: true, flatten: true, src: ['.config/environments.js'], dest: 'app/scripts/services/'}
+        ]
+      },
+      dev: {
+        options: {
+          patterns: [
+            {
+              match: 'ENVIRONMENT',
+              replacement: 'env'
+            }
+          ]
+        },
+        files: [
+          {expand: true, flatten: true, src: ['.config/environments.js'], dest: 'app/scripts/services/'}
+        ]
+      }
+    },
+
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
@@ -384,6 +414,11 @@ module.exports = function (grunt) {
           ]
         }, {
           expand: true,
+          cwd: 'bower_components/material-design-icons/sprites/svg-sprite',
+          dest: '<%= yeoman.dist %>/material-design-icons/sprites/svg-sprite',
+          src: ['**/*']
+        }, {
+          expand: true,
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
@@ -394,6 +429,12 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      icons: {
+        expand: true,
+        cwd: 'bower_components/material-design-icons/sprites/svg-sprite',
+        dest: '<%= yeoman.app %>/material-design-icons/sprites/svg-sprite',
+        src: ['**/*']
       }
     },
 
@@ -427,11 +468,13 @@ module.exports = function (grunt) {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
 
-    grunt.task.run([
+   grunt.task.run([
       'clean:server',
+      'replace:dev',
       'wiredep',
       'concurrent:server',
       'postcss:server',
+      'copy:icons',
       'connect:livereload',
       'watch'
     ]);
@@ -453,6 +496,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'replace:dist',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
