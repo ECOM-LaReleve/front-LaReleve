@@ -134,7 +134,7 @@ angular.module('laReleveApp')
     	// reset login status
 		  AuthenticationFactory.Logout();
 		  $location.path('/login');
-    }
+    };
 
     /**
      * Allow to toggle a sidenav identified by its id
@@ -149,10 +149,6 @@ angular.module('laReleveApp')
       console.log(elem);
     }; 
 
-    $scope.loggingFunction2 = function(){
-      console.log($scope.selectedItem);
-      console.log(selectedItem);
-    }; 
 
 		/**
 		 * Use this function to change view with ng-click

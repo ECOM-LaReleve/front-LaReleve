@@ -80,6 +80,7 @@ angular
 
     // redirect to login page if not logged in and trying to access a restricted page
     $rootScope.$on('$locationChangeStart', function (event, next, current) {
+      console.log(event, next, current);
       var publicPages = ['/login'];
       var restrictedPage = publicPages.indexOf($location.path()) === -1;
       if (restrictedPage && !$localStorage.currentUser) {
@@ -106,11 +107,11 @@ angular
 
 
   .config(function($mdThemingProvider) {
-    var customBlueMap =     $mdThemingProvider.extendPalette('light-blue', {
-      'contrastDefaultColor': 'light',
-      'contrastDarkColors': ['50'],
-      '50': 'ffffff'
-    });
+    // var customBlueMap =     $mdThemingProvider.extendPalette('light-blue', {
+    //   'contrastDefaultColor': 'light',
+    //   'contrastDarkColors': ['50'],
+    //   '50': 'ffffff'
+    // });
 
     var customLimeMap =     $mdThemingProvider.extendPalette('lime', {
       'contrastDefaultColor': 'light',

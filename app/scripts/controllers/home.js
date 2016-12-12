@@ -25,6 +25,7 @@ angular.module('laReleveApp')
      * @param {[type]}
      */
     $scope.addIndividu = function(individu) {
+      individu.menage = JSON.parse(individu.menage);
       console.log(individu);
       CreateIndividuFactory.createIndividu(individu,
         function(individu) {
@@ -36,7 +37,7 @@ angular.module('laReleveApp')
     };
 
 
-         /**
+    /**
      * Show the dialog to create a new individu to the database
      * @param  {[type]} ev [description]
      * @return {[type]}    [description]

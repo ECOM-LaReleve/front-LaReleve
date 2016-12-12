@@ -35,7 +35,7 @@
         }
       },
       function(response) {
-        console.log("Login failed");
+        console.log("Login failed " + response);
         callback(false);
       });
     }

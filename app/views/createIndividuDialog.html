@@ -43,6 +43,15 @@
         </div>
       </md-input-container>
 
+      <md-input-container class="md-block" flex>
+        <label>Ménage</label>
+        <md-select ng-model="individuInfos.menage">
+          <md-option ng-repeat="menage in allMenages" value="{{menage}}">
+            Ménage {{menage.nomChefMenage}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
       <md-input-container>
         <label>Numéro de téléphone</label>
 				<input type="text" ng-model="individuInfos.tel" name="tel" md-maxlength="20">

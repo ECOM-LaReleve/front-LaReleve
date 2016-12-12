@@ -169,7 +169,7 @@ angular.module('laReleveApp')
           $scope.individusInfos.forEach(function(individu) {
             individu.menage = menage;
             $scope.addIndividu(individu);
-          })
+          });
 
         }, function() {
           console.log('Menage creation failed!');

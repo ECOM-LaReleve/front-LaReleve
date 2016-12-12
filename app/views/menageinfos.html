@@ -4,7 +4,7 @@
 			<md-card flex>
 				<md-card-header md-colors="::{backgroundColor: 'greyTheme-primary-400'}">
 					<md-card-header-text>
-						<span class="md-title">Ménage {{$parent.individus[0].nomUsage | uppercase}}</span>
+						<span class="md-title">Ménage {{$parent.menageInfos.nomChefMenage | uppercase}}</span>
 						<span class="md-subhead">Informations générales</span>
 					</md-card-header-text>
 				</md-card-header>
@@ -14,8 +14,8 @@
 					<md-list-item class="md-2-line">
 						<md-icon md-svg-icon="action:ic_assignment_ind_24px" class="name"></md-icon>
 						<div class="md-list-item-text">
-							<h3>{{$parent.menageInfos.referant.nom | uppercase}} {{menageInfos.referant.prenom}}</h3>
-							<p>{{$parent.menageInfos.referant.service.libelle}}</p> 
+							<h3>{{$parent.menageInfos.referant.nom | uppercase}} {{$parent.menageInfos.referant.prenom || "Aucun référant affecté"}}</h3>
+							<p>{{$parent.menageInfos.referant.service.libelle || "Aucun service"}}</p> 
 						</div>
 					</md-list-item>
 					<md-divider ng-if="!$last"></md-divider>
@@ -40,7 +40,7 @@
 								Direction: {{$parent.menageInfos.logement.direction || "Aucune"}}
 							</p>
 							<p>
-								Etage n°{{menageInfos.logement.etage || "non renseigné"}}
+								Etage n°{{menageInfos.logement.etage || " non renseigné"}}
 							</p>
 						</div>
 					</md-list-item>
@@ -50,7 +50,7 @@
 					<md-list-item class="md-2-line">
 						<md-icon md-svg-icon="editor:ic_insert_invitation_24px" class="name"></md-icon>
 						<div class="md-list-item-text">
-							<h3>{{(menageInfos.dateEntree | date: "dd/MM/yyyy")|| "Aucune date renseignée"}}</h3>
+							<h3>{{($parent.menageInfos.dateEntree | date: "dd/MM/yyyy")|| "Aucune date renseignée"}}</h3>
 							<p>Date d'entrée</p> 
 						</div>
 					</md-list-item>

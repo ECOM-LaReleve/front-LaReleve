@@ -74,7 +74,7 @@
               <md-list>
                <md-list-item class="md-2-line" ng-repeat="elem in allMenages track by $index" ng-click="go('/menage/'+elem.id)">
                   <div class="md-list-item-text compact">
-                    <h3>Ménage {{elem.nomChefMenage}}</h3>
+                    <h3>Ménage {{elem.nomChefMenage | uppercase}}</h3>
                     <p>Date d'échéance la plus proche: 1{{$index+1}}/12/2016</p>
                   </div>
                   <md-icon class="taskNotOk" md-svg-icon="alert:ic_error_24px" aria-label="task not ok icon"></md-icon>

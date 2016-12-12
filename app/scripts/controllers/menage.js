@@ -8,7 +8,7 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('MenageCtrl', ['$scope', '$q', '$timeout', '$mdDialog', '$routeParams', 'PrestationsRealiseesByMenageFactory', 'ActesRealisesByMenageFactory', 'MenagesByIdFactory', 'IndividusByMenageIdFactory', function ($scope, $q, $timeout, $mdDialog, $routeParams, PrestationsRealiseesByMenageFactory, ActesRealisesByMenageFactory, MenagesByIdFactory, IndividusByMenageIdFactory) {
+  .controller('MenageCtrl', ['$scope', '$q', '$timeout', '$mdDialog', '$routeParams', 'PrestationsRealiseesByMenageFactory', 'ActesRealisesByMenageFactory', function ($scope, $q, $timeout, $mdDialog, $routeParams, PrestationsRealiseesByMenageFactory, ActesRealisesByMenageFactory) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -48,7 +48,7 @@ angular.module('laReleveApp')
     $scope.prestationRealiseesListByIdMenage($scope.idMenage);
     $scope.actesRealisesListByIdMenage($scope.idMenage);
     $scope.infoMenageById($scope.idMenage);
-    $scope.getIndividusFromMenageById($scope.idMenage);
+    //$scope.getIndividusFromMenageById($scope.idMenage);
 
 
     /**
