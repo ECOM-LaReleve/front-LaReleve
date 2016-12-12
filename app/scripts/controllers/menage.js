@@ -8,12 +8,47 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('MenageCtrl', ['$scope', '$q', '$timeout', '$mdDialog', function ($scope, $q, $timeout, $mdDialog) {
+  .controller('MenageCtrl', ['$scope', '$q', '$timeout', '$mdDialog', '$routeParams', 'PrestationsRealiseesByMenageFactory', 'ActesRealisesByMenageFactory', 'MenagesByIdFactory', 'IndividusByMenageIdFactory', function ($scope, $q, $timeout, $mdDialog, $routeParams, PrestationsRealiseesByMenageFactory, ActesRealisesByMenageFactory, MenagesByIdFactory, IndividusByMenageIdFactory) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+
+    $scope.idMenage = $routeParams.id;
+
+     /**
+     * Initialize prestations realisees list by id menage
+     */
+    $scope.prestationRealiseesListByIdMenage = function(id) {
+       PrestationsRealiseesByMenageFactory.getPrestationsRealiseesByMenage({id:id},function (prestations){
+        prestations.$promise.then(function(prestations) {
+          $scope.prestations = prestations;
+
+          //Hide the loading bar when the data are available
+          //$scope.hideLoadingBar();
+        });
+      });
+    };
+
+    /**
+     * Initialize actes realises list by id menage
+     */
+    $scope.actesRealisesListByIdMenage = function(id) {
+       ActesRealisesByMenageFactory.getActesRealisesByMenage({id:id},function (actes){
+        actes.$promise.then(function(actes) {
+          $scope.actes = actes;
+
+          //Hide the loading bar when the data are available
+          //$scope.hideLoadingBar();
+        });
+      });
+    };
+
+    $scope.prestationRealiseesListByIdMenage($scope.idMenage);
+    $scope.actesRealisesListByIdMenage($scope.idMenage);
+    $scope.infoMenageById($scope.idMenage);
+    $scope.getIndividusFromMenageById($scope.idMenage);
 
 
     /**

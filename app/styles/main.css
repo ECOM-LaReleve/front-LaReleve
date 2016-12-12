@@ -152,6 +152,40 @@ md-card-header-text > h2 {
   pointer-events: none;
 }
 
+/*Icon on search input of the main toolbar*/
+md-toolbar md-autocomplete-wrap:before {
+  font-family: "Material Icons";
+  content: "\E8B6";
+  line-height: 1;
+  padding: 8px 0px 0px 8px;
+  font-weight: normal;
+  font-size: 24px;
+}
+
+
+/*Serch input on the main toolbar*/
+md-toolbar md-autocomplete input::-webkit-input-placeholder {
+    color:rgb(128,137,35);
+}
+md-toolbar md-autocomplete input:-moz-placeholder { /* Firefox 18- */
+    color:rgb(128,137,35);
+}
+md-toolbar md-autocomplete input::-moz-placeholder {  /* Firefox 19+ */
+    color:rgb(128,137,35);
+}
+md-toolbar md-autocomplete input:-ms-input-placeholder { 
+    color:rgb(128,137,35);
+}
+
+.logoToolbar {
+  max-width: 48px;
+  margin-right: 12px; 
+}
+
+.pointerMouse {
+  cursor: pointer; cursor: hand;
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

@@ -4,9 +4,9 @@
 			<md-card flex>
 				<md-card-header md-colors="::{backgroundColor: 'greyTheme-primary-400'}">
 					<md-card-header-text>
-						<span class="md-title">Ménage DUPONT</span>
+						<span class="md-title">Ménage {{individus[0].nomUsage | uppercase}}</span>
 						<span class="md-subhead">Informations générales</span>
-						<md-button style="position: absolute; left: 260px;" class="md-icon-button" aria-label="Search" ng-click="go('/menageInfos')">
+						<md-button style="position: absolute; left: 260px;" class="md-icon-button" aria-label="Search" ng-click="go('/menageInfos/'+idMenage)">
 		          <md-icon md-svg-icon="action:ic_launch_24px" aria-label="Search"></md-icon>
 		        </md-button>
 					</md-card-header-text>
@@ -17,8 +17,8 @@
 					<md-list-item class="md-2-line">
 						<md-icon md-svg-icon="action:ic_assignment_ind_24px" class="name"></md-icon>
 						<div class="md-list-item-text">
-							<h3>Régis RAMEL</h3>
-							<p>Service 1</p> 
+							<h3>{{menageInfos.referant.nom | uppercase}} {{menageInfos.referant.prenom}}</h3>
+							<p>{{menageInfos.referant.service.libelle}}</p> 
 						</div>
 					</md-list-item>
 					<md-divider ng-if="!$last"></md-divider>
@@ -28,10 +28,7 @@
 						<div class="md-list-item-text">
 							<h3>Adresse</h3>
 							<p>
-								56 Rue du Prieuré
-							</p>
-							<p>
-								38000 Grenoble
+								{{menageInfos.logement.adresse}}
 							</p>
 						</div>
 					</md-list-item>
@@ -40,13 +37,13 @@
 						<div class="md-list-item-text">
 							<h3>Détails</h3>
 							<p>
-								5e à gauche
+								Digicode: {{menageInfos.logement.digicode || "Aucun"}}
 							</p>
 							<p>
-								Digicode 5120
+								Direction: {{menageInfos.logement.direction || "Aucune"}}
 							</p>
 							<p>
-								Escalier droite
+								Etage n°{{menageInfos.logement.etage}}
 							</p>
 						</div>
 					</md-list-item>
@@ -56,8 +53,8 @@
 					<md-list-item class="md-2-line">
 						<md-icon md-svg-icon="editor:ic_insert_invitation_24px" class="name"></md-icon>
 						<div class="md-list-item-text">
-							<h3>12/10/2004</h3>
-							<p>Toujours présent</p> 
+							<h3>{{(menageInfos.dateEntree | date: "dd/MM/yyyy") || "Aucune date renseignée"}}</h3>
+							<p>Date d'entrée</p> 
 						</div>
 					</md-list-item>
 					<md-divider ng-if="!$last"></md-divider>
@@ -95,10 +92,10 @@
 
       				<md-input-container>
       					<label>Actes</label>
-      					<md-select ng-model="ctrl.acte">
+      					<md-select ng-model="acteSelected">
       						<md-option>Aucun</md-option>
-      						<md-option ng-repeat="acte in [1,2,3,4,5,6]" ng-value="acte">
-      							Acte n°{{acte}}
+      						<md-option ng-repeat="acte in actesTypes" ng-value="acte">
+      							{{acte.libelle}}
       						</md-option>
       					</md-select>
       				</md-input-container>
@@ -107,8 +104,8 @@
       					<label>Prestations</label>
       					<md-select ng-model="ctrl.prestation">
       						<md-option>Aucune</md-option>
-      						<md-option ng-repeat="prestation in [1,2,3,4,5,6]" ng-value="prestation">
-      							Prestation n°{{prestation}}
+      						<md-option ng-repeat="prestation in prestationsTypes" ng-value="prestation">
+      							{{prestation.libelle}}
       						</md-option>
       					</md-select>
       				</md-input-container>
@@ -117,8 +114,8 @@
       					<label>Besoins</label>
       					<md-select ng-model="ctrl.besoin">
       						<md-option>Aucun</md-option>
-      						<md-option ng-repeat="besoin in [1,2,3,4,5,6]" ng-value="besoin">
-      							Besoin n°{{besoin}}
+      						<md-option ng-repeat="besoin in besoinsTypes" ng-value="besoin">
+      							{{besoin.libelle}}
       						</md-option>
       					</md-select>
       				</md-input-container>

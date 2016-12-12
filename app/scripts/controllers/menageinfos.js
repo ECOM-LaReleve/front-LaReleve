@@ -8,10 +8,9 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('MenageinfosCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MenageinfosCtrl', ['$scope', '$mdDialog', '$routeParams', function ($scope, $mdDialog, $routeParams) {
+   	
+
+   	$scope.infoMenageById($routeParams.id);
+    $scope.getIndividusFromMenageById($routeParams.id);
+  }]);
