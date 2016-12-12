@@ -44,4 +44,17 @@ angular.module('laReleveApp')
     });
   }])
 
-  ;
+   .factory('CreateIndividuFactory', function($resource, $rootScope, WebServices) {
+    var userWebservices = WebServices.webServicesGroup;
+    return $resource(userWebservices.individus.create, {}, {
+      createIndividu: {
+        method:'POST',
+        interceptor: {
+          responseError: function (data) {
+            $rootScope.$broadcast('requestResponseError', data);
+          }
+        },
+        headers : {'Content-Type': 'application/json'}
+      }
+    });
+  });

@@ -14,6 +14,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body ng-app="laReleveApp" layout="column" ng-controller="PrimaryCtrl" ng-cloak class="md-default-theme">
     <!--[if lte IE 8]>
@@ -46,9 +47,10 @@
             md-items="item in searchMenage(searchText)"
             md-item-text="item.id"
             md-floating-label="&nbsp;"
-            placeholder="Rechercher un ménage">
+            placeholder="Rechercher un ménage"
+            md-theme="greyTheme">
           <md-item-template>
-            <span ng-click="go('/menage/'+item.id)" md-highlight-text="searchText">{{item.id}}</span>
+            <span ng-click="go('/menage/'+item.id)" md-highlight-text="searchText">Ménage {{item.id}}</span>
           </md-item-template>
           <md-not-found>
             <a ng-click="go('/menage/1')">Aucun résulat pour "{{searchText}}". Créez un nouvel individu en cliquant ici !</a>
@@ -141,6 +143,8 @@
         <script src="scripts/services/prestationsrealiseesfactories.js"></script>
         <script src="scripts/services/actesrealisesfactories.js"></script>
         <script src="scripts/services/individufactories.js"></script>
+        <script src="scripts/services/userfactories.js"></script>
+        <script src="scripts/services/servicesfactories.js"></script>
         <!-- endbuild -->
 </body>
 </html>

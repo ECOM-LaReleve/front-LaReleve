@@ -26,8 +26,8 @@
 		    <md-input-container class="md-block" flex>
 		      <label>Service</label>
 		      <md-select ng-model="menage.service">
-		        <md-option ng-repeat="service in [1,2,3,4,5,6,7,8,9]" value="{{service}}">
-		          Service n°{{service}}
+		        <md-option ng-repeat="service in services" value="{{service}}">
+		          {{service.libelle}}
 		        </md-option>
 		      </md-select>
 		    </md-input-container>
@@ -35,8 +35,8 @@
 		    <md-input-container class="md-block" flex>
 		      <label>Référent</label>
 		      <md-select ng-model="menage.referant">
-		        <md-option ng-repeat="referent in [1,2,3,4,5,6,7,8,9]" value="{{referent}}">
-		          Référent n°{{referent}}
+		        <md-option ng-repeat="referent in users" value="{{referent}}">
+		          {{referent.prenom}} {{referent.nom | uppercase}}
 		        </md-option>
 		      </md-select>
 		    </md-input-container>

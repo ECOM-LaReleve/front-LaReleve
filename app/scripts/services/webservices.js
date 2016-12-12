@@ -27,6 +27,9 @@
        get:'/besoins',
        getById:'/besoins/:id'
      },
+      services: {
+       get:'/services'
+     },
       actes: {
        get:'/actes',
        getById:'/actes/:id'

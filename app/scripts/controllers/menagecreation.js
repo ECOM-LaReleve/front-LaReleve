@@ -8,12 +8,51 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('MenagecreationCtrl', ['$scope', '$q', '$timeout', '$mdDialog', function ($scope, $q, $timeout, $mdDialog) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MenagecreationCtrl', ['$scope', '$q', '$timeout', '$mdDialog', 'UserFactory', 'ServicesFactory', function ($scope, $q, $timeout, $mdDialog, UserFactory, ServicesFactory) {
+    
+    /**
+     * Initialize users list
+     */
+    $scope.userList = function() {
+       UserFactory.getUtilisateurs(function (users){
+        users.$promise.then(function(users) {
+          $scope.users = users;
+
+          console.log($scope.users);
+          //Hide the loading bar when the data are available
+          //$scope.hideLoadingBar();
+        });
+      });
+    };
+
+    /**
+     * Initialize services list
+     */
+    $scope.servicesList = function() {
+       ServicesFactory.getServices(function (services){
+        services.$promise.then(function(services) {
+          $scope.services = services;
+
+          console.log($scope.services);
+          //Hide the loading bar when the data are available
+          //$scope.hideLoadingBar();
+        });
+      });
+    };
+
+    $scope.userList();
+
+    $scope.servicesList();
+
+
+
+
+
+
+
+
+
+
 
     $scope.individusInfos = [];
 
