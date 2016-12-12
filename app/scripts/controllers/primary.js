@@ -8,7 +8,7 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('PrimaryCtrl', ['$scope', '$rootScope','$mdSidenav', '$location', 'BesoinsFactory', 'ActesFactory', 'PrestationsFactory', 'AuthenticationFactory', function ($scope, $rootScope, $mdSidenav, $location, BesoinsFactory, ActesFactory, PrestationsFactory, AuthenticationFactory) {
+  .controller('PrimaryCtrl', ['$scope', '$rootScope','$mdSidenav', '$location', 'BesoinsFactory', 'ActesFactory', 'PrestationsFactory',  'MenagesByIdFactory', 'IndividusByMenageIdFactory', 'AuthenticationFactory', function ($scope, $rootScope, $mdSidenav, $location, BesoinsFactory, ActesFactory, PrestationsFactory, MenagesByIdFactory, IndividusByMenageIdFactory, AuthenticationFactory) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -54,6 +54,34 @@ angular.module('laReleveApp')
           $rootScope.prestationsTypes = prestations;
 
           console.log($rootScope.prestationsTypes);
+          //Hide the loading bar when the data are available
+          //$scope.hideLoadingBar();
+        });
+      });
+    };
+
+     /**
+     * Initialize prestations realisees list by id menage
+     */
+    $scope.infoMenageById = function(id) {
+       MenagesByIdFactory.getMenagesById({id:id},function (menageInfos){
+        menageInfos.$promise.then(function(menageInfos) {
+          $scope.menageInfos = menageInfos;
+
+          //Hide the loading bar when the data are available
+          //$scope.hideLoadingBar();
+        });
+      });
+    };
+
+     /**
+     * Initialize prestations realisees list by id menage
+     */
+    $scope.getIndividusFromMenageById = function(id) {
+       IndividusByMenageIdFactory.getIndividusByMenageId({id:id},function (individus){
+        individus.$promise.then(function(individus) {
+          $scope.individus = individus;
+          console.log($scope.individus);
           //Hide the loading bar when the data are available
           //$scope.hideLoadingBar();
         });

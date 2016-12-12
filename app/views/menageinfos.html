@@ -4,7 +4,7 @@
 			<md-card flex>
 				<md-card-header md-colors="::{backgroundColor: 'greyTheme-primary-400'}">
 					<md-card-header-text>
-						<span class="md-title">Ménage DUPONT</span>
+						<span class="md-title">Ménage {{$parent.individus[0].nomUsage | uppercase}}</span>
 						<span class="md-subhead">Informations générales</span>
 					</md-card-header-text>
 				</md-card-header>
@@ -14,7 +14,7 @@
 					<md-list-item class="md-2-line">
 						<md-icon md-svg-icon="action:ic_assignment_ind_24px" class="name"></md-icon>
 						<div class="md-list-item-text">
-							<h3>Régis RAMEL</h3>
+							<h3>{{$parent.menageInfos.referant.nom | uppercase}} {{$parent.menageInfos.referant.prenom}}</h3>
 							<p>Service 1</p> 
 						</div>
 					</md-list-item>
@@ -53,7 +53,7 @@
 					<md-list-item class="md-2-line">
 						<md-icon md-svg-icon="editor:ic_insert_invitation_24px" class="name"></md-icon>
 						<div class="md-list-item-text">
-							<h3>12/10/2004</h3>
+							<h3>{{$parent.menageInfos.dateEntree | date: "dd/MM/yyyy"}}</h3>
 							<p>Toujours présent</p> 
 						</div>
 					</md-list-item>
@@ -72,10 +72,10 @@
 
 		<md-content layout-fill>
 			<div layout="row" layout-wrap layout-align="start start">
-				<md-card>
+				<md-card ng-repeat="individu in individus">
 					<md-card-title md-colors="::{backgroundColor: 'greyTheme-primary-200'}">
 						<md-card-title-text>
-							<span class="md-headline">Pierre DUPONT</span>
+							<span class="md-headline">{{individu.prenom}} {{individu.nomUsage | uppercase}}</span>
 							<span class="md-subhead">Chef de famille</span>
 						</md-card-title-text>
 					</md-card-title>
@@ -83,21 +83,21 @@
 						<md-list-item class="md-2-line">
 							<md-icon md-svg-icon="communication:ic_phone_24px" class="name"></md-icon>
 							<div class="md-list-item-text">
-								<h3>06 31 52 89 20</h3>
-								<p>Numéro de téléphone</p> 
+								<h3>{{individu.tel}}</h3>
+								<p>Numéro de téléphone
 							</div>
 						</md-list-item>
 						<md-list-item class="md-2-line">
 							<md-icon md-svg-icon="communication:ic_location_on_24px" class="name"></md-icon>
 							<div class="md-list-item-text">
-								<h3>Saint Martin d'Hères</h3>
+								<h3>{{individu.villeNaissance}}</h3>
 								<p>Ville de naissance</p> 
 							</div>
 						</md-list-item>
 						<md-list-item class="md-2-line">
 							<md-icon md-svg-icon="communication:ic_phone_24px" class="name"></md-icon>
 							<div class="md-list-item-text">
-								<h3>Marié</h3>
+								<h3>{{individu.statutMatrimonial}}</h3>
 								<p>Statut matrimonial</p> 
 							</div>
 						</md-list-item>
@@ -107,43 +107,6 @@
 				      Plus de détails
 				    </md-button>
 						<!-- <md-button>Plus de détails</md-button> -->
-					</md-card-actions>
-				</md-card>
-
-				<md-card>
-					<md-card-title md-colors="::{backgroundColor: 'greyTheme-primary-200'}">
-						<md-card-title-text>
-							<span class="md-headline">Martine DUPONT</span>
-							<span class="md-subhead">Nom de naissance : RAINAUT</span>
-						</md-card-title-text>
-					</md-card-title>
-					<md-card-content>
-						<md-list-item class="md-2-line">
-							<md-icon md-svg-icon="communication:ic_phone_24px" class="name"></md-icon>
-							<div class="md-list-item-text">
-								<h3>06 25 65 23 45</h3>
-								<p>Numéro de téléphone</p> 
-							</div>
-						</md-list-item>
-						<md-list-item class="md-2-line">
-							<md-icon md-svg-icon="communication:ic_location_on_24px" class="name"></md-icon>
-							<div class="md-list-item-text">
-								<h3>Lyon</h3>
-								<p>Ville de naissance</p> 
-							</div>
-						</md-list-item>
-						<md-list-item class="md-2-line">
-							<md-icon md-svg-icon="communication:ic_phone_24px" class="name"></md-icon>
-							<div class="md-list-item-text">
-								<h3>Marié</h3>
-								<p>Statut matrimonial</p> 
-							</div>
-						</md-list-item>
-					</md-card-content>
-					<md-card-actions layout="row" layout-align="end center">
-						<md-button class="md-primary md-raised" ng-click="showTabDialog($event)" >
-				      Plus de détails
-				    </md-button>
 					</md-card-actions>
 				</md-card>
 			</div>
