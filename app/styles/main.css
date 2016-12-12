@@ -177,6 +177,14 @@ md-toolbar md-autocomplete input:-ms-input-placeholder {
     color:rgb(128,137,35);
 }
 
+.logoToolbar {
+  max-width: 48px;
+  margin-right: 12px; 
+}
+
+.pointerMouse {
+  cursor: pointer; cursor: hand;
+}
 
 
 /* Responsive: Portrait tablets and up */

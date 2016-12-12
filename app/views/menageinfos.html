@@ -1,6 +1,6 @@
 <div flex layout="row">
 	<md-sidenav id="infoMenageSidenav" layout="column" class="md-sidenav-left md-sidenav-list" md-component-id="nav" md-is-locked-open="$mdMedia('gt-xs')" md-is-open="firstLaunch">
-		<md-content class="animate-show" id="infoMenageContainer" ng-show="!loadingBar" layout="row" flex>
+		<md-content class="animate-show" id="infoMenageContainer" ng-show="!loadingBar">
 			<md-card flex>
 				<md-card-header md-colors="::{backgroundColor: 'greyTheme-primary-400'}">
 					<md-card-header-text>
@@ -14,7 +14,7 @@
 					<md-list-item class="md-2-line">
 						<md-icon md-svg-icon="action:ic_assignment_ind_24px" class="name"></md-icon>
 						<div class="md-list-item-text">
-							<h3>{{$parent.menageInfos.referant.nom | uppercase}} {{$parent.menageInfos.referant.prenom}}</h3>
+							<h3>{{$parent.menageInfos.referant.nom | uppercase}} {{menageInfos.referant.prenom}}</h3>
 							<p>{{$parent.menageInfos.referant.service.libelle}}</p> 
 						</div>
 					</md-list-item>
@@ -25,10 +25,7 @@
 						<div class="md-list-item-text">
 							<h3>Adresse</h3>
 							<p>
-								56 Rue du Prieuré
-							</p>
-							<p>
-								38000 Grenoble
+								{{$parent.menageInfos.logement.adresse || "Aucune adresse renseignée"}}
 							</p>
 						</div>
 					</md-list-item>
@@ -37,13 +34,13 @@
 						<div class="md-list-item-text">
 							<h3>Détails</h3>
 							<p>
-								5e à gauche
+								Digicode: {{$parent.menageInfos.logement.digicode || "Aucun"}}
 							</p>
 							<p>
-								Digicode 5120
+								Direction: {{$parent.menageInfos.logement.direction || "Aucune"}}
 							</p>
 							<p>
-								Escalier droite
+								Etage n°{{menageInfos.logement.etage || "non renseigné"}}
 							</p>
 						</div>
 					</md-list-item>
@@ -53,8 +50,8 @@
 					<md-list-item class="md-2-line">
 						<md-icon md-svg-icon="editor:ic_insert_invitation_24px" class="name"></md-icon>
 						<div class="md-list-item-text">
-							<h3>{{$parent.menageInfos.dateEntree | date: "dd/MM/yyyy"}}</h3>
-							<p>Toujours présent</p> 
+							<h3>{{(menageInfos.dateEntree | date: "dd/MM/yyyy")|| "Aucune date renseignée"}}</h3>
+							<p>Date d'entrée</p> 
 						</div>
 					</md-list-item>
 					<md-divider ng-if="!$last"></md-divider>
@@ -67,8 +64,8 @@
 						</div>
 					</md-list-item>
 				</md-card>
-			</md-content>
-		</md-sidenav>
+		</md-content>
+	</md-sidenav>
 
 		<md-content layout-fill>
 			<div layout="row" layout-wrap layout-align="start start">
@@ -76,28 +73,28 @@
 					<md-card-title md-colors="::{backgroundColor: 'greyTheme-primary-200'}">
 						<md-card-title-text>
 							<span class="md-headline">{{individu.prenom}} {{individu.nomUsage | uppercase}}</span>
-							<span class="md-subhead">Chef de famille</span>
+							<span class="md-subhead">Personne n°{{$index+1}}</span>
 						</md-card-title-text>
 					</md-card-title>
 					<md-card-content>
 						<md-list-item class="md-2-line">
 							<md-icon md-svg-icon="communication:ic_phone_24px" class="name"></md-icon>
 							<div class="md-list-item-text">
-								<h3>{{individu.tel}}</h3>
+								<h3>{{individu.tel || "Non renseigné"}}</h3>
 								<p>Numéro de téléphone
 							</div>
 						</md-list-item>
 						<md-list-item class="md-2-line">
 							<md-icon md-svg-icon="communication:ic_location_on_24px" class="name"></md-icon>
 							<div class="md-list-item-text">
-								<h3>{{individu.villeNaissance}}</h3>
+								<h3>{{individu.villeNaissance || "Non renseigné"}}</h3>
 								<p>Ville de naissance</p> 
 							</div>
 						</md-list-item>
 						<md-list-item class="md-2-line">
 							<md-icon md-svg-icon="communication:ic_phone_24px" class="name"></md-icon>
 							<div class="md-list-item-text">
-								<h3>{{individu.statutMatrimonial}}</h3>
+								<h3>{{individu.statutMatrimonial || "Non renseigné"}}</h3>
 								<p>Statut matrimonial</p> 
 							</div>
 						</md-list-item>

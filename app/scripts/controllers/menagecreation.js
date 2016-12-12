@@ -8,7 +8,7 @@
  * Controller of the laReleveApp
  */
 angular.module('laReleveApp')
-  .controller('MenagecreationCtrl', ['$scope', '$q', '$timeout', '$mdDialog', 'UserFactory', 'ServicesFactory', function ($scope, $q, $timeout, $mdDialog, UserFactory, ServicesFactory) {
+  .controller('MenagecreationCtrl', ['$scope', '$q', '$timeout', '$mdDialog', 'UserFactory', 'ServicesFactory', 'CreateMenageFactory', 'CreateIndividuFactory', function ($scope, $q, $timeout, $mdDialog, UserFactory, ServicesFactory, CreateMenageFactory, CreateIndividuFactory) {
     
     /**
      * Initialize users list
@@ -43,15 +43,6 @@ angular.module('laReleveApp')
     $scope.userList();
 
     $scope.servicesList();
-
-
-
-
-
-
-
-
-
 
 
     $scope.individusInfos = [];
@@ -133,7 +124,6 @@ angular.module('laReleveApp')
         console.log(individuInfos);
         $scope.saveChefDeFamilleInfo(individuInfos);
         $mdDialog.hide();
-
       };
     }
 
@@ -147,6 +137,45 @@ angular.module('laReleveApp')
     };
 
 
+
+    /**
+     * Send the new individu to the server
+     * @param {[type]}
+     */
+    $scope.addIndividu = function(individu) {
+      console.log(individu);
+      CreateIndividuFactory.createIndividu(individu,
+        function(individu) {
+          console.log('Individu ' + individu + ' successfully added !');
+        }, function() {
+          console.log('Individu creation failed!');
+        }
+      );
+    };
+
+
+
+    /**
+     * Send the new individu to the server
+     * @param {[type]}
+     */
+    $scope.addMenage = function(menage) {
+      menage.referant = JSON.parse(menage.referant);
+      console.log(menage);
+      CreateMenageFactory.createMenage(menage,
+        function(menage) {
+          console.log('Menage ' + menage.nomChefMenage + ' successfully added !');
+          console.log(menage);
+          $scope.individusInfos.forEach(function(individu) {
+            individu.menage = menage;
+            $scope.addIndividu(individu);
+          })
+
+        }, function() {
+          console.log('Menage creation failed!');
+        }
+      );
+    };
 
 
   }]);

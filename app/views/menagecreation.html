@@ -23,14 +23,14 @@
 	      </div>
 	    </md-toolbar>
 		  <div layout="row" layout-margin>
-		    <md-input-container class="md-block" flex>
+		    <!-- <md-input-container class="md-block" flex>
 		      <label>Service</label>
-		      <md-select ng-model="menage.service">
-		        <md-option ng-repeat="service in services" value="{{service}}">
+		      <md-select ng-model="menage.referant.service.id">
+		        <md-option ng-repeat="service in services" value="{{service.id}}">
 		          {{service.libelle}}
 		        </md-option>
 		      </md-select>
-		    </md-input-container>
+		    </md-input-container> -->
 
 		    <md-input-container class="md-block" flex>
 		      <label>Référent</label>
@@ -59,7 +59,7 @@
 		    
 			  <md-input-container class="md-block">
 			    <label>Adresse</label>
-			    <textarea ng-model="menage.adresse" md-maxlength="255" rows="3" md-select-on-focus></textarea>
+			    <textarea ng-model="menage.adresseActuelle" md-maxlength="255" rows="3" md-select-on-focus></textarea>
 			  </md-input-container>
 
 		  </div>
@@ -78,7 +78,11 @@
 				</div>
 			</md-toolbar>
 
-			<div layout="column" layout-margin>
+			<md-input-container class="md-block" layout-align="space-around center">
+			  <label>Nom du chef de famille</label>
+			  <input required ng-model="menage.nomChefMenage" md-maxlength="20" md-select-on-focus></input>
+			</md-input-container>
+			<!-- <div layout="column" layout-margin>
 		    <md-autocomplete flex required
             md-input-name="chefDeFamilleField"
             md-selected-item="selectedItem"
@@ -97,7 +101,7 @@
             <div ng-message="required">Ce champ est <b>obligatoire !</b></div>
             <div ng-message="md-require-match">Vous devez saisir une personne <b>existante !</b></div>
           </div>
- 				</md-autocomplete>
+ 				</md-autocomplete> -->
 
 
  				<md-subheader>Individus</md-subheader>
@@ -141,7 +145,7 @@
 		</form>
 
 		<md-card-actions layout="row" layout-align="end center">
-			<md-button>Valider</md-button>
+			<md-button ng-disabled="menageCreationForm.$invalid" ng-click="addMenage(menage)" class="md-primary"> Enregistrer </md-button>
 		</md-card-actions>
 	</md-card>
 

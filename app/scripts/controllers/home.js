@@ -28,7 +28,7 @@ angular.module('laReleveApp')
       console.log(individu);
       CreateIndividuFactory.createIndividu(individu,
         function(individu) {
-          console.log('Individu ' + individu.id + 'successfully added !');
+          console.log('Individu ' + individu + ' successfully added !');
         }, function() {
           console.log('Individu creation failed!');
         }
@@ -74,9 +74,6 @@ angular.module('laReleveApp')
         $mdDialog.cancel();
       };
       $scope.createIndividu = function(individuInfos) {
-      
-        console.log("Creation d'un individu");
-        console.log(individuInfos);
         $scope.saveIndividuInfo(individuInfos);
         $mdDialog.hide();
         // $scope.showLoadingBar();
@@ -84,7 +81,6 @@ angular.module('laReleveApp')
       $scope.createChefDeFamille = function(individuInfos) {
 
         console.log("Creation d'un chef de famille");
-        console.log(individuInfos);
         $scope.saveChefDeFamilleInfo(individuInfos);
         $mdDialog.hide();
 
@@ -97,7 +93,6 @@ angular.module('laReleveApp')
     };
 
     $scope.saveIndividuInfo = function(individuInfos) {
-      console.log(individuInfos);
       $scope.addIndividu(individuInfos);
     };
 

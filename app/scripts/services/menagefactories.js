@@ -78,4 +78,21 @@ angular.module('laReleveApp')
       }
     });
   }])
+
+
+
+  .factory('CreateMenageFactory', function($resource, $rootScope, WebServices) {
+    var userWebservices = WebServices.webServicesGroup;
+    return $resource(userWebservices.menages.create, {}, {
+      createMenage: {
+        method:'POST',
+        interceptor: {
+          responseError: function (data) {
+            $rootScope.$broadcast('requestResponseError', data);
+          }
+        },
+        headers : {'Content-Type': 'application/json'}
+      }
+    });
+  })
   ;

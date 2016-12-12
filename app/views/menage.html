@@ -28,10 +28,7 @@
 						<div class="md-list-item-text">
 							<h3>Adresse</h3>
 							<p>
-								56 Rue du Prieuré
-							</p>
-							<p>
-								38000 Grenoble
+								{{menageInfos.logement.adresse}}
 							</p>
 						</div>
 					</md-list-item>
@@ -40,13 +37,13 @@
 						<div class="md-list-item-text">
 							<h3>Détails</h3>
 							<p>
-								5e à gauche
+								Digicode: {{menageInfos.logement.digicode || "Aucun"}}
 							</p>
 							<p>
-								Digicode 5120
+								Direction: {{menageInfos.logement.direction || "Aucune"}}
 							</p>
 							<p>
-								Escalier droite
+								Etage n°{{menageInfos.logement.etage}}
 							</p>
 						</div>
 					</md-list-item>
@@ -56,8 +53,8 @@
 					<md-list-item class="md-2-line">
 						<md-icon md-svg-icon="editor:ic_insert_invitation_24px" class="name"></md-icon>
 						<div class="md-list-item-text">
-							<h3>{{menageInfos.dateEntree | date: "dd/MM/yyyy"}}</h3>
-							<p>Toujours présent</p> 
+							<h3>{{(menageInfos.dateEntree | date: "dd/MM/yyyy") || "Aucune date renseignée"}}</h3>
+							<p>Date d'entrée</p> 
 						</div>
 					</md-list-item>
 					<md-divider ng-if="!$last"></md-divider>
